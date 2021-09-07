@@ -1,5 +1,5 @@
 let bodyInsert = "";
-let state = ""
+let state = "";
 
 const css = `
 * {
@@ -11,6 +11,7 @@ const css = `
   
   h1,
   p, 
+  input,
   hr {
     margin: 1vh 2vh 1vh 2vh;
   }
@@ -48,17 +49,17 @@ exports.createPage = (title, ...body) => {
     `;
 };
 
+exports.init = () => {
+  bodyInsert = ""
+};
+
 exports.setState = (stateValue) => {
-    state == stateValue
-    console.log(state)
-}
+  state += stateValue;
+  console.log("Dado:", state);
+};
 
 const insert = (body) => {
-//   if (bodyInsert.includes("master")) {
-//     bodyInsert == "";
-//   } else {
-    bodyInsert += body;
-//   }
+  bodyInsert += body;
 };
 
 exports.initDiv = (id) => {
@@ -81,7 +82,7 @@ exports.createElement = (element, ...value) => {
     elementId = "";
   }
 
-  insert(`<${element} id=${elementId}>${elementValue}</${element}>`);
+  insert(`<${element} id="${elementId}">${elementValue}</${element}>`);
 };
 
 exports.createTitle = (...value) => {
@@ -96,19 +97,24 @@ exports.createTitle = (...value) => {
     elementId = "";
   }
 
-  insert(`<h1 id=${elementId}>${elementValue}</h1>`);
+  insert(`<h1 id="${elementId}">${elementValue}</h1>`);
 };
 
 exports.createLine = () => {
   insert(`<hr></hr>`);
 };
 
-exports.createTextInput = (...value) => {
-    let elementId = value[0];
+// exports.createTextInput = (...value) => {
+//     let elementId = value[0];
+//     let elementAction = value[1];
 
-    if (elementId == undefined) {
-      elementId = "";
-    }
+//     if (elementId == undefined) {
+//       elementId = "";
+//     }
 
-    insert(`<input type="text" id=${elementId}/>`)
-}
+//     if (elementAction == undefined) {
+//         elementAction = "";
+//       }
+
+//     insert(`<input type="text" id="${elementId}"/>`);
+// }
