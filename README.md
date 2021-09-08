@@ -2,6 +2,11 @@
 
 O FloripaJS é um Framework para Web desenvolvido em Node.JS. Tendo em vista praticidade e simplicidade para o desenvolvedor. Todo o código é compilado no servidor, assim visando melhor desempenho.
 
+## Execução
+  1. Realize o download do projeto via ```git clone https://github.com/Gui1949/FloripaJS.git``` ou clicando no botão "Code".
+  2. Após feito o download, entre na pasta em que o mesmo foi realizado, e nessa pasta abra a sua IDE favorita (No Visual Studio Code, isso pode ser realizado via ```code .``` ou no CMD (ou terminal, caso esteja usando Linux ou MacOS) no diretório da pasta, ou na barra do Windows Explorer).
+  3. Feito o processo anterior, execute no terminal de sua IDE o comando ```node main.js```. E dessa forma, o servidor HTTP será iniciado na porta 25565. Para acessar a aplicação, digite http://localhost:25565/ e será exibida no seu navegador a página de boas-vindas do FloripaJS (Imagem 1).
+  
 ## Como usar
 
 O FloripaJS foi desenvolvido para ser um framework de uso simples e prático, para ser criada uma página, bastam poucas linhas:
@@ -24,6 +29,7 @@ exports.page = () => {
 Com o código acima, é criada a página a seguir:
 
 ![PrintScreen](https://github.com/Gui1949/FloripaJS/blob/master/blob/print.png)
+<p align="center">Imagem 1</p>
 
 ## Comandos
 
@@ -63,3 +69,4 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
 ```Floripa.createLine();```
   * Cria uma linha horizontal que corta toda a tela;
   * Esse comando não possui parâmetros. 
+ 
