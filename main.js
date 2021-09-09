@@ -14,6 +14,7 @@ const server = http.createServer((req, res) => {
   else{
     res.end(index.page());
   }
+  
 });
 
 server.listen(25565, "127.0.0.1");

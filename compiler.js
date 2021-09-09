@@ -20,11 +20,57 @@ const css = `
       margin-top: 2vh;
   }
 
+  h2{
+    color: white;
+  }
+
   div{
       display: flex;
       flex-direction: column;
   }
+
+  #master{
+    width: 100%;
+    height: 100%;
+    background-color: #282a36;
+  }
+
+  #navbar{
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    box-shadow: 0 0 2vh rgba(0,0,0,.2);
+    background-color: #282a36;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
   
+  .card {
+    padding: 1vh 3vh 2vh;
+    align-items: center;
+    margin-top: 2vh;
+    overflow-wrap: break-word;
+    background-color: #44475a;
+    align-self: flex-start;
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1vh;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+  } 
+
+  #feedUpperMargin{
+    width: 100%;
+    margin-top: 10vh;
+    align-items: center;
+  }
+
 `;
 
 exports.createPage = (title, ...body) => {
@@ -103,6 +149,17 @@ exports.createTitle = (...value) => {
 exports.createLine = () => {
   insert(`<hr></hr>`);
 };
+
+exports.createUpperNavBar = (title, ...items) => {
+
+  let elementTitle = title;
+
+  insert(`<div id="navbar"><h2>${elementTitle}</h2></div>`)
+}
+
+exports.createCard = (...items) => {
+  insert(`<div class="card" id=${items[0]}><h1>Teste</h1></div>`)
+}
 
 // exports.createTextInput = (...value) => {
 //     let elementId = value[0];
