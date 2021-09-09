@@ -158,20 +158,6 @@ exports.createUpperNavBar = (title, ...items) => {
 }
 
 exports.createCard = (...items) => {
-  insert(`<div class="card" id=${items[0]}><h1>Teste</h1></div>`)
+  insert(`<div class="card" id=${items[0]}><h2>${items[0].POST_DESC}</h2></div>`)
 }
 
-// exports.createTextInput = (...value) => {
-//     let elementId = value[0];
-//     let elementAction = value[1];
-
-//     if (elementId == undefined) {
-//       elementId = "";
-//     }
-
-//     if (elementAction == undefined) {
-//         elementAction = "";
-//       }
-
-//     insert(`<input type="text" id="${elementId}"/>`);
-// }
