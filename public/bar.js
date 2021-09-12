@@ -24,7 +24,6 @@ http.get("http://bardojeiz-server.herokuapp.com/data/", (res) => {
 
 const criarPosts = () => {
   let i = 0;
-
   while (i < data.length) {
     console.log(i);
     Floripa.createCard(data[i]);

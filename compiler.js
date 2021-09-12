@@ -57,7 +57,7 @@ const css = `
     overflow-wrap: break-word;
     background-color: #44475a;
     align-self: flex-start;
-    width: 40%;
+    width: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -65,10 +65,46 @@ const css = `
     box-shadow: 0 0 5px rgba(0,0,0,.2);
   } 
 
+  .avatar{
+    width: 5vh;
+    height: 5vh;
+    border-radius: 10vh;
+    object-fit: cover;
+  }
+
+  .post_img{
+    height:60vh;
+    width: 100%;
+    object-fit: contain;
+    background-color: #282a36;
+    border-radius: 1vh;
+    margin: 1.5vh 0 1vh 0;
+  }
+
   #feedUpperMargin{
     width: 100%;
     margin-top: 10vh;
     align-items: center;
+  }
+
+  .descript, .descript_header{
+    margin: 0;
+    color: white;
+    height: auto;
+  }
+
+  .card_header{
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 0.8vh
+  }
+
+  .descript_header{
+    margin: 0.25vh 0vh 0vh 1vh
+  }
+
+  .descript_header > p{
+    margin: 0;
   }
 
 `;
@@ -96,7 +132,7 @@ exports.createPage = (title, ...body) => {
 };
 
 exports.init = () => {
-  bodyInsert = ""
+  bodyInsert = "";
 };
 
 exports.setState = (stateValue) => {
@@ -151,13 +187,14 @@ exports.createLine = () => {
 };
 
 exports.createUpperNavBar = (title, ...items) => {
-
   let elementTitle = title;
 
-  insert(`<div id="navbar"><h2>${elementTitle}</h2></div>`)
-}
+  insert(`<div id="navbar"><h2>${elementTitle}</h2></div>`);
+};
 
 exports.createCard = (...items) => {
-  insert(`<div class="card" id=${items[0]}><h2>${items[0].POST_DESC}</h2></div>`)
-}
-
+  console.log(items[0]);
+  insert(
+    `<div class="card" id=${items[0].ID}><div class="card_header"><img class="avatar" src="${items[0].USER_PIC}"/><div class='descript_header'><p><b>${items[0].USERNAME}</b></p><p>${items[0].POST_DATA}</p></div></div><img class="post_img" src="${items[0].PIC_LOCAL}"/><p class='descript'>${items[0].POST_DESC}</p></div>`
+  );
+};
