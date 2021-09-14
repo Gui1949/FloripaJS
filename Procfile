@@ -1,0 +1,1 @@
+build: node main.js

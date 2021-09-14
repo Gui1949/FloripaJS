@@ -70,6 +70,7 @@ const css = `
     height: 5vh;
     border-radius: 10vh;
     object-fit: cover;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
   }
 
   .post_img{
@@ -100,7 +101,7 @@ const css = `
   }
 
   .descript_header{
-    margin: 0.25vh 0vh 0vh 1vh
+    margin: 0.13vh 0vh 0vh 1vh
   }
 
   .descript_header > p{

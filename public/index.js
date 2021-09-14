@@ -6,7 +6,7 @@ exports.page = () => {
     "FloripaJS",
     Floripa.createTitle("FloripaJS"),
     Floripa.initDiv("main"),
-    Floripa.createLine("hr"),
+    Floripa.createLine(),
     Floripa.createElement("p", "Seja bem-vindo ao FloripaJS!"),
     Floripa.endDiv(),
   );
