@@ -49,6 +49,11 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
     Floripa.createElement("p", "Seja bem-vindo ao FloripaJS!"),
     Floripa.endDiv(),
   ```
+
+```Floripa.buildPage(titulo da página, corpo);```
+  * Mesma semântica do comando ```Floripa.createPage();```;
+  * Esse comando gera um arquivo HTML no seguinte caminho: ```./build/index.html```
+
   
 ```Floripa.initDiv(id);```
   * Cria e inicia um container de elementos;
@@ -56,6 +61,16 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
   
 ```Floripa.endDiv();```
   * Encerra o escopo de um container de elementos;
+  * Esse comando não possui parâmetros.
+
+```Floripa.initMaster();```
+  * Cria e inicia um container mestre;
+  * Para finalizar o escopo do container, deve ser usado o comando ```Floripa.endMaster();```.
+  * Esse comando não possui parâmetros.
+  
+```Floripa.endMaster();```
+  * Encerra o escopo de um container mestre;
+  * Esse comando não possui parâmetros.
   * Esse comando não possui parâmetros.
 
 ```Floripa.createElement(tag do elemento em HTML, valor (caso necessário), id);```

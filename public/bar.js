@@ -33,13 +33,13 @@ const criarPosts = () => {
 
 exports.page = () => {
   Floripa.init();
-  return Floripa.createPage(
+  return Floripa.buildPage(
     "Bar do Jeiz",
     Floripa.createUpperNavBar("Bar do Jeiz"),
-    Floripa.initDiv("master"),
+    Floripa.initMaster(),
     Floripa.initDiv("feedUpperMargin"),
     criarPosts(),
     Floripa.endDiv(),
-    Floripa.endDiv()
+    Floripa.endMaster()
   );
 };
