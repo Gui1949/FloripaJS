@@ -101,9 +101,8 @@ Para executar o build de seu código, o FloripaJS conta com o arquivo ```./build
   });
   ```
 
-As páginas devem ser importadas conforme a primeira linha do código ```const index = require("./public/index");```. Após a importação, o nome da página deve ser inserido na array pages, segue exemplo de inserção de uma página chamada "Cerginho":
+As páginas devem ser importadas conforme a primeira linha do código: ```const index = require("./public/index");```. Após a importação, o nome da página deve ser inserido na array pages, segue exemplo de inserção de uma página chamada "Cerginho":
   
-    ```
     const index = require("./public/index");
     const cerginho = require("./public/cerginho")
     const fs = require("fs");
@@ -119,4 +118,4 @@ As páginas devem ser importadas conforme a primeira linha do código ```const i
         }
       );
     });
-    ```
+    
