@@ -10,7 +10,6 @@ O FloripaJS é um Framework para Web desenvolvido em Node.JS. Tendo em vista pra
 ## Como usar
 
 O FloripaJS foi desenvolvido para ser um framework de uso simples e prático, para ser criada uma página, bastam poucas linhas:
-
 ```
 const Floripa = require("../compiler");
 
@@ -30,6 +29,44 @@ Com o código acima, é criada a página a seguir:
 
 ![PrintScreen](https://github.com/Gui1949/FloripaJS/blob/master/blob/print.png)
 <p align="center">Imagem 1</p>
+
+Todas as páginas devem ser criadas no caminho ```./public```. As mesmas devem seguir o padrão estabelecido acima, e devem ser referenciadas no arquivo ```./main.js``` de duas maneiras:
+  * A página deve ser requerida via ```const nome_pagina = require("./public/nome_pagina");```;
+  * E deve ser criada uma rota:
+ 
+      ```
+      if (url === "/nome_pagina") {
+       res.end(nome_pagina.page());
+      }
+      ```
+  * Levando em consideração que "nome_pagina" deve ser substituído pelo nome da página a ser inserida.
+
+Feitas as medidas acima, o arquivo ```./main.js``` ficará da seguinte maneira:
+
+```
+const http = require("http");
+
+const index = require("./public/index");
+const nome_pagina = require("./public/nome_pagina");
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
+  let url = req.url;
+
+  if (url === "/nome_pagina") {
+    res.end(nome_pagina.page());
+  }
+
+  else{
+    res.end(index.page());
+  }
+  
+});
+
+server.listen(25565, "127.0.0.1");
+console.log("Server abrido!! Porta 25565");
+
+```
 
 ## Comandos
 
