@@ -49,11 +49,6 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
     Floripa.createElement("p", "Seja bem-vindo ao FloripaJS!"),
     Floripa.endDiv(),
   ```
-
-```Floripa.buildPage(titulo da página, corpo);```
-  * Mesma semântica do comando ```Floripa.createPage();```;
-  * Esse comando gera um arquivo HTML no seguinte caminho: ```./build/index.html```
-
   
 ```Floripa.initDiv(id);```
   * Cria e inicia um container de elementos;
@@ -85,3 +80,43 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
   * Cria uma linha horizontal que corta toda a tela;
   * Esse comando não possui parâmetros. 
  
+## Build
+
+Para executar o build de seu código, o FloripaJS conta com o arquivo ```./builder```:
+
+  ```
+  const index = require("./public/index");
+  const fs = require("fs");
+
+  let pages = ['index'];
+
+  pages.forEach((element) => {
+    fs.writeFile(
+      `./build/${element}.html`,
+      eval(element).page(),
+      (err) => {
+        console.log(err);
+      }
+    );
+  });
+  ```
+
+As páginas devem ser importadas conforme a primeira linha do código ```const index = require("./public/index");```. Após a importação, o nome da página deve ser inserido na array pages, segue exemplo de inserção de uma página chamada "Cerginho":
+  
+    ```
+    const index = require("./public/index");
+    const cerginho = require("./public/cerginho")
+    const fs = require("fs");
+
+    let pages = ['index','cerginho'];
+
+    pages.forEach((element) => {
+      fs.writeFile(
+        `./build/${element}.html`,
+        eval(element).page(),
+        (err) => {
+          console.log(err);
+        }
+      );
+    });
+    ```
