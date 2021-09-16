@@ -26,7 +26,14 @@ const criarPosts = () => {
   let i = 0;
   while (i < data.length) {
     console.log(i);
-    Floripa.createCard(data[i]);
+    Floripa.createCard(
+      data[i].ID,
+      data[i].USER_PIC,
+      data[i].USERNAME,
+      data[i].POST_DATA,
+      data[i].PIC_LOCAL,
+      data[i].POST_DESC
+    );
     i++;
   }
 };
@@ -38,6 +45,7 @@ exports.page = () => {
     Floripa.createUpperNavBar("Bar do Jeiz"),
     Floripa.initMaster(),
     Floripa.initDiv("feedUpperMargin"),
+    Floripa.createSimpleCard('Guilherme Floriano'),
     criarPosts(),
     Floripa.endDiv(),
     Floripa.endMaster()

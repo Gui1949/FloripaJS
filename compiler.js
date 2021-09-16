@@ -204,8 +204,27 @@ exports.createUpperNavBar = (title, ...items) => {
 };
 
 exports.createCard = (...items) => {
-  console.log(items[0]);
   insert(
-    `<div class="card" id=${items[0].ID}><div class="card_header"><img class="avatar" src="${items[0].USER_PIC}"/><div class='descript_header'><p><b>${items[0].USERNAME}</b></p><p>${items[0].POST_DATA}</p></div></div><img class="post_img" src="${items[0].PIC_LOCAL}"/><p class='descript'>${items[0].POST_DESC}</p></div>`
+    `<div class="card" id=${items[0]}>
+      <div class="card_header">
+        <img class="avatar" src="${items[1]}"/>
+        <div class='descript_header'>
+          <p><b>${items[2]}</b></p>
+          <p>${items[3]}</p>
+        </div>
+      </div>
+      
+      <img class="post_img" src="${items[4]}"/>
+      <p class='descript'>${items[5]}</p>
+    </div>`
+  );
+};
+
+exports.createSimpleCard = (...items) => {
+  insert(
+    `<div class="card">
+      <h2>${items[0]}</h2>
+      <p class='descript'>Cu</p>
+    </div>`
   );
 };
