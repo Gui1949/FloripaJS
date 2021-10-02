@@ -90,20 +90,28 @@ const css = `
     align-items: center;
   }
 
-  .descript, .descript_header{
+  .descript, .descript_header, .descript_card, .descript_footer{
     margin: 0;
     color: white;
     height: auto;
   }
 
+  .descript_card{
+    margin: 1vh 0 0 0;
+  }
+
   .card_header{
     flex-direction: row;
     align-items: flex-start;
-    margin-top: 0.8vh
+    margin-top: 0.8vh;
+  }
+
+  .descript_footer{
+    margin: 1vh 0 1vh 0;
   }
 
   .descript_header{
-    margin: 0.13vh 0vh 0vh 1vh
+    margin: 0.13vh 0vh 0vh 1vh;
   }
 
   .descript_header > p{
@@ -193,6 +201,10 @@ exports.createTitle = (...value) => {
   insert(`<h1 id="${elementId}">${elementValue}</h1>`);
 };
 
+exports.createText = (value) => {
+  insert(`<p class='descript_footer'>${value}</p>`);
+};
+
 exports.createLine = () => {
   insert(`<hr></hr>`);
 };
@@ -220,11 +232,12 @@ exports.createCard = (...items) => {
   );
 };
 
-exports.createSimpleCard = (...items) => {
-  insert(
-    `<div class="card">
-      <h2>${items[0]}</h2>
-      <p class='descript'>Cu</p>
-    </div>`
-  );
+exports.createSimpleCard = (title, ...items) => {
+  insert(`<div class="card"><h2>${title}</h2>`);
+
+  items.forEach((element) => {
+    insert(`<p class='descript_card'>${element}</p>`);
+  });
+
+  insert(`</div>`);
 };
