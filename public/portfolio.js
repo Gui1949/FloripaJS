@@ -4,9 +4,19 @@ exports.page = () => {
   Floripa.init();
   return Floripa.createPage(
     "Meu Portfólio",
-    Floripa.createUpperNavBar("Guilherme Floriano"),
+    Floripa.createUpperNavBar("Meu Portfólio"),
     Floripa.initMaster(),
     Floripa.initDiv("feedUpperMargin"),
+
+    Floripa.createCard(
+      "main",
+      "https://avatars.githubusercontent.com/u/28566734?v=4",
+      "Guilherme Floriano",
+      "21 anos de idade | Guarulhos-SP | Desenvolvedor e Carinha do T.I",
+      "https://giffiles.alphacoders.com/209/209661.gif",
+      "Você já chegou a abrir um chamado referente a esse assunto?"
+    ),
+
     Floripa.createSimpleCard(
       "Experiência",
       "SETEMBRO DE 2018 - ABRIL DE 2019",
@@ -34,15 +44,15 @@ exports.page = () => {
     ),
 
     Floripa.createSimpleCard(
-        "Habilidades",
-        "Boa comunicação;",
-        "Proatividade;",
-        "Vontade de aprender;",
-        "Experiência como Freelancer;",
-        "Resolução de problemas;",
-        "Inovação;"
+      "Habilidades",
+      "Boa comunicação;",
+      "Proatividade;",
+      "Vontade de aprender;",
+      "Experiência como Freelancer;",
+      "Resolução de problemas;",
+      "Inovação;"
     ),
-    Floripa.createText('Site criado com FloripaJS'),
+    Floripa.createText("Site criado com FloripaJS"),
     Floripa.endDiv(),
     Floripa.endMaster()
   );

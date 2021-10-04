@@ -53,7 +53,7 @@ const css = `
   }
   
   .card {
-    padding: 1vh 3vh 2vh;
+    padding: 2.5vh;
     align-items: center;
     margin-top: 2vh;
     overflow-wrap: break-word;
@@ -231,6 +231,7 @@ exports.createCard = (...items) => {
     </div>`
   );
 };
+
 
 exports.createSimpleCard = (title, ...items) => {
   insert(`<div class="card"><h2>${title}</h2>`);

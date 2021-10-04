@@ -103,7 +103,6 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
 ```Floripa.endMaster();```
   * Encerra o escopo de um container mestre;
   * Esse comando não possui parâmetros.
-  * Esse comando não possui parâmetros.
 
 ```Floripa.createElement(tag do elemento em HTML, valor (caso necessário), id);```
   * Cria um elemento na tela, usando em base a TAG do mesmo em HTML;
@@ -117,6 +116,22 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
   * Cria uma linha horizontal que corta toda a tela;
   * Esse comando não possui parâmetros. 
  
+```Floripa.createText(texto);```
+  * Cria um parágrafo;
+  * O campo é obrigatório;
+
+```Floripa.createUpperNavBar(titulo, itens);```
+  * Cria uma navigation bar no topo da tela;
+  * O único campo obrigatório é o título;
+
+```Floripa.createCard(id, url da foto do avatar, titulo, subtitulo, url da postagem, descrição);```
+  * Cria um card, totalmente baseado em redes sociais;
+  * Nenhum dos campos é obrigatório;
+
+```Floripa.createSimpleCard(titulo, textos);```
+  * Cria um card com um título e vários parágrafos;
+  * O único campo obrigatório é o título;
+
 ## Build
 
 Para executar o build de seu código, o FloripaJS conta com o arquivo ```./builder```:
