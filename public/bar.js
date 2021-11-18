@@ -45,7 +45,6 @@ exports.page = () => {
     Floripa.createUpperNavBar("Bar do Jeiz"),
     Floripa.initMaster(),
     Floripa.initDiv("feedUpperMargin"),
-    Floripa.createSimpleCard('Guilherme Floriano'),
     criarPosts(),
     Floripa.endDiv(),
     Floripa.endMaster()

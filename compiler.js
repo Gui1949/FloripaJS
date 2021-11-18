@@ -31,6 +31,10 @@ const css = `
       flex-direction: column;
   }
 
+  body{
+    min-height: 100%;
+  }
+
   #master{
     width: 100%;
     height: 100%;
@@ -242,3 +246,32 @@ exports.createSimpleCard = (title, ...items) => {
 
   insert(`</div>`);
 };
+
+exports.createTextInput = (id, placeholder) => {
+  insert(`<input type='text' id=${id} placeholder='${placeholder}' />`)
+}
+
+exports.generateTextInput = (id, placeholder) => {
+  insert(`<input type='text' id='generate' placeholder='${placeholder}' />`)
+}
+
+
+exports.generateButton = (id, value) => {
+  insert(`<input type='button' id=${id} value=${value} onclick=generate()>`)
+}
+
+exports.generatePost = (id, value) => {
+  insert(`<input type='button' id=${id} value=${value} onclick=newpost()>`)
+}
+
+exports.insertScript = (script) => {
+  insert(`<script>${script}</script>`)
+}
+
+exports.blackBody = () => {
+  insert('<style>body{background-color: #282a36;}</style>')
+}
+
+exports.whiteSpace = () => {
+  insert('&nbsp')
+}

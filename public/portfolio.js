@@ -2,6 +2,7 @@ const Floripa = require("../compiler");
 
 exports.page = () => {
   Floripa.init();
+
   return Floripa.createPage(
     "Meu Portfólio",
     Floripa.createUpperNavBar("Meu Portfólio"),
@@ -20,7 +21,7 @@ exports.page = () => {
     Floripa.createSimpleCard(
       "Experiência",
       "SETEMBRO DE 2018 - ABRIL DE 2019",
-      "<b>APRENDIZ DE T.I,</b> FARMARIN IND. E COMÉRCIO LTDA.",
+      "<b>APRENDIZ DE T.I,</b> FARMAR1 IND. E COMÉRCIO LTDA.",
       "Suporte ao usuário, formatação e configuração de computadores, protocolos POP e IMAP, Office 365 e GSuite.",
       "<BR/>",
       "ABRIL DE 2019 - OUTUBRO DE 2020",
