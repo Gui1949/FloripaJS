@@ -27,17 +27,18 @@ const server = http.createServer((req, res) => {
     }
 
     if (post != null) {
-      path = "./build/blog.html"
-      fs.readFile(path, 'utf8', function (err, data) {
+      path = "./build/data.js";
+      fs.readFile(path, "utf8", function (err, data) {
         if (err) throw err;
         data = data.toString();
-        data = data.replace(
-          /&nbsp/gim,
-          `&nbsp<div class="card"><h2>${post}</h2></div>`
-        );
-        fs.writeFile("./build/blog.html", data, function(err){
-          err || console.log('Show', data)
-        })
+        data = data.replace(/data = '/gim, "");
+        data = data.replace("'", "")
+        data = data.replace(";", "")
+        data = JSON.parse(data)
+        console.log(data)
+        // fs.writeFile("./build/blog.html", data, function (err) {
+        //   err || console.log("Show", data);
+        // });
       });
     }
   } else if (url === "/") {
