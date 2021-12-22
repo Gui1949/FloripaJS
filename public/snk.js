@@ -1,6 +1,6 @@
 const http = require("http");
-const fetch = require('cross-fetch');
-const Floripa = require("../compiler");
+const fetch = require("cross-fetch");
+const Floripa = require("../components/compiler");
 
 let dados = {
   username: "G.FLORIANO",
@@ -32,7 +32,7 @@ fetch(url, {
 })
   .then((resp) => resp.text())
   .then(function (data) {
-    console.log('aaaaaaaaaaaaaaaaaa', data);
+    console.log("aaaaaaaaaaaaaaaaaa", data);
     let find_jsonid_ini = data.search("<jsessionid>");
     let find_jsonid_fi = data.search("</jsessionid>");
 
@@ -43,11 +43,13 @@ fetch(url, {
     });
   });
 
+const render = () => {
+  Floripa.initMaster();
+  Floripa.createTitle("Opa!");
+  Floripa.endMaster();
+};
+
 exports.page = () => {
   Floripa.init();
-  return Floripa.createPage(
-    "Teste Sankhya",
-    Floripa.initMaster(),
-    Floripa.endMaster()
-  );
+  return Floripa.createPage("Teste Sankhya", render());
 };

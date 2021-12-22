@@ -1,6 +1,6 @@
 const http = require("http");
 const fs = require("fs");
-const Floripa = require("../compiler");
+const Floripa = require("../components/compiler");
 
 let data = {
   'title': 'Hello World'

@@ -1,5 +1,4 @@
-const Floripa = require("../compiler");
-
+const Floripa = require("../components/compiler");
 exports.page = () => {
   Floripa.init();
 

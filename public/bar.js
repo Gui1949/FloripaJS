@@ -1,5 +1,5 @@
 const http = require("http");
-const Floripa = require("../compiler");
+const Floripa = require("../components/compiler");
 
 let data = "";
 
