@@ -1,8 +1,8 @@
 const http = require("http");
-
 const index = require("./public/index");
 const bar = require("./public/bar");
 const portfolio = require("./public/portfolio");
+const snk = require("./public/snk");
 const blog = require("./public/blog");
 const fs = require("fs");
 
@@ -16,7 +16,9 @@ const server = http.createServer((req, res) => {
     res.end(bar.page());
   } else if (url === "/portfolio") {
     res.end(portfolio.page());
-  } else if (url.includes("/blog")) {
+  } else if (url === "/snk") {
+    res.end(snk.page());
+  }else if (url.includes("/blog")) {
     let newURL = url.replace("/blog/?", "");
     let params = new URLSearchParams(newURL);
     titulo = params.get("titulo");
