@@ -8,6 +8,7 @@ exports.page = () => {
     Floripa.initDiv("main"),
     Floripa.createLine(),
     Floripa.createElement("p", "Seja bem-vindo ao FloripaJS!"),
+    Floripa.createLink('/snk', 'SNK'),
     // Floripa.createLine(),
     // Floripa.createTitle("FloripaPress"),
     // Floripa.createElement("p","Crie o seu site (somente blog)"),

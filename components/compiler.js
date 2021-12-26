@@ -43,7 +43,7 @@ const css = `
   #master{
     width: 100%;
     height: 100%;
-    background-color: #282a36;
+    // background-color: #282a36;
   }
 
   #navbar{
@@ -251,15 +251,19 @@ exports.createSimpleCard = (title, ...items) => {
   insert(`</div>`);
 };
 
-exports.createTextInput = (id, placeholder) => {
+exports.createTextInput = (id, placeholder, onchange, value) => {
   insert(`<input type='text' id=${id} placeholder='${placeholder}' />`);
 };
 
 exports.createButton = (id, value, action) => {
   insert(
-    `<insert type='button' class='btn' id=${id} value=${value}/><script>document.getElementById('${id}').onclick = ${action};</script>`
+    `<input type='button' class='btn' id=${id} value=${value} onclick='${action}' />`
   );
 };
+
+exports.createLink = (path, name) => {
+  insert(`<a href=${path}>${name}</a>`);
+}
 
 // exports.generateTextInput = (id, placeholder) => {
 //   insert(`<input type='text' id='generate' placeholder='${placeholder}' />`)
@@ -273,9 +277,9 @@ exports.createButton = (id, value, action) => {
 //   insert(`<input type='button' id=${id} value=${value} onclick=newpost()>`)
 // }
 
-// exports.insertScript = (script) => {
-//   insert(`<script>${script}</script>`)
-// }
+exports.insertScript = (script) => {
+  insert(`<script>${script}</script>`)
+}
 
 // exports.blackBody = () => {
 //   insert('<style>body{background-color: #282a36;}</style>')

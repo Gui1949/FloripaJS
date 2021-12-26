@@ -5,6 +5,7 @@ const portfolio = require("../public/portfolio");
 const snk = require("../public/snk");
 const blog = require("../public/blog");
 const fs = require("fs");
+const Actions = require('../components/actions')
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
@@ -12,7 +13,14 @@ const server = http.createServer((req, res) => {
 
   console.log(req.url);
 
-  if (url === "/bar") {
+  if (url.includes("/snk/login")) {
+    let newURL = url.replace("/snk/login?", "");
+    console.log(newURL);
+    let params = new URLSearchParams(newURL);
+    username = params.get("username");
+    passwd = params.get("passwd");
+    res.end(Actions.login_snk(username, passwd));
+  } else if (url === "/bar") {
     res.end(bar.page());
   } else if (url === "/portfolio") {
     res.end(portfolio.page());
@@ -45,6 +53,7 @@ const server = http.createServer((req, res) => {
   else if (url === "/") {
     res.end(index.page());
   } else {
+    res.writeHead(404, { "Content-type": "text/html; charset=utf-8" });
     res.end("Erro 404: Página não encontrada");
   }
 });
