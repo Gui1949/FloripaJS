@@ -11,6 +11,11 @@ const css = `
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
   
+  .btn{
+    width: 50px;
+    height: 50px;
+  }
+
   h1,
   p, 
   input,
@@ -117,7 +122,6 @@ const css = `
   .descript_header{
     margin: 0.13vh 0vh 0vh 1vh;
   }
-
   .descript_header > p{
     margin: 0;
   }
@@ -136,7 +140,7 @@ exports.createPage = (title, ...body) => {
         <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <script type="text/javascript" src="data.js"></script>
+            <script type="text/javascript" src="actions.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>${title}</title>
         </head>
@@ -237,7 +241,6 @@ exports.createCard = (...items) => {
   );
 };
 
-
 exports.createSimpleCard = (title, ...items) => {
   insert(`<div class="card"><h2>${title}</h2>`);
 
@@ -249,30 +252,35 @@ exports.createSimpleCard = (title, ...items) => {
 };
 
 exports.createTextInput = (id, placeholder) => {
-  insert(`<input type='text' id=${id} placeholder='${placeholder}' />`)
-}
+  insert(`<input type='text' id=${id} placeholder='${placeholder}' />`);
+};
 
-exports.generateTextInput = (id, placeholder) => {
-  insert(`<input type='text' id='generate' placeholder='${placeholder}' />`)
-}
+exports.createButton = (id, value, action) => {
+  insert(
+    `<insert type='button' class='btn' id=${id} value=${value}/><script>document.getElementById('${id}').onclick = ${action};</script>`
+  );
+};
 
+// exports.generateTextInput = (id, placeholder) => {
+//   insert(`<input type='text' id='generate' placeholder='${placeholder}' />`)
+// }
 
-exports.generateButton = (id, value) => {
-  insert(`<input type='button' id=${id} value=${value} onclick=generate()>`)
-}
+// exports.generateButton = (id, value) => {
+//   insert(`<input type='button' id=${id} value=${value} onclick=generate()>`)
+// }
 
-exports.generatePost = (id, value) => {
-  insert(`<input type='button' id=${id} value=${value} onclick=newpost()>`)
-}
+// exports.generatePost = (id, value) => {
+//   insert(`<input type='button' id=${id} value=${value} onclick=newpost()>`)
+// }
 
-exports.insertScript = (script) => {
-  insert(`<script>${script}</script>`)
-}
+// exports.insertScript = (script) => {
+//   insert(`<script>${script}</script>`)
+// }
 
-exports.blackBody = () => {
-  insert('<style>body{background-color: #282a36;}</style>')
-}
+// exports.blackBody = () => {
+//   insert('<style>body{background-color: #282a36;}</style>')
+// }
 
-exports.whiteSpace = () => {
-  insert('&nbsp')
-}
+// exports.whiteSpace = () => {
+//   insert('&nbsp')
+// }
