@@ -1,6 +1,7 @@
 const http = require("http");
 const Floripa = require("../components/compiler");
 
+let floripa = new Floripa();
 let data = "";
 
 http.get("http://bardojeiz-server.herokuapp.com/data/", (res) => {
@@ -13,7 +14,6 @@ http.get("http://bardojeiz-server.herokuapp.com/data/", (res) => {
   res.on("end", async () => {
     try {
       const parsedData = JSON.parse(rawData);
-      console.log(parsedData.data.length);
       data = parsedData.data;
       return data;
     } catch (e) {
@@ -26,7 +26,7 @@ const criarPosts = () => {
   let i = 0;
   while (i < data.length) {
     console.log(i);
-    Floripa.createCard(
+    floripa.createCard(
       data[i].ID,
       data[i].USER_PIC,
       data[i].USERNAME,
@@ -39,14 +39,14 @@ const criarPosts = () => {
 };
 
 exports.page = () => {
-  Floripa.init();
-  return Floripa.createPage(
+  floripa.init();
+  return floripa.createPage(
     "Bar do Jeiz",
-    Floripa.createUpperNavBar("Bar do Jeiz"),
-    Floripa.initMaster(),
-    Floripa.initDiv("feedUpperMargin"),
+    floripa.createUpperNavBar("Bar do Jeiz"),
+    floripa.initMaster(),
+    floripa.initDiv("feedUpperMargin"),
     criarPosts(),
-    Floripa.endDiv(),
-    Floripa.endMaster()
+    floripa.endDiv(),
+    floripa.endMaster()
   );
 };

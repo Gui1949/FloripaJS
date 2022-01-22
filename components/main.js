@@ -4,6 +4,7 @@ const bar = require("../public/bar");
 const portfolio = require("../public/portfolio");
 const fs = require("fs");
 const Actions = require("../components/actions");
+const Index = require("../public/index");
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
@@ -16,7 +17,8 @@ const server = http.createServer((req, res) => {
   } else if (url === "/portfolio") {
     res.end(portfolio.page());
   } else if (url === "/") {
-    res.end(index.page());
+    // res.end(index.page());
+    res.end(new Index().page());
   } else {
     res.writeHead(404, { "Content-type": "text/html; charset=utf-8" });
     res.end("Erro 404: Página não encontrada");
