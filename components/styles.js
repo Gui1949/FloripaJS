@@ -1,8 +1,14 @@
-exports.css = `* {
+exports.css = `
+    body{
+        background-color: #282a36;
+    }
+    * {
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        color: white;
+        text-decoration: none;
       }
       
       .btn{
@@ -40,7 +46,7 @@ exports.css = `* {
         background-color: #282a36;
       }
     
-      #navbar{
+      .navbar{
         z-index: 1;
         position: fixed;
         top: 0;
@@ -54,7 +60,22 @@ exports.css = `* {
         flex-direction: row;
         justify-content: center;
       }
+
+      .navbar.title-left{
+          justify-content: space-between;
+      }
+
+      .navbar-title{
+          margin-left: 2.5vh
+      }
       
+      .items-navbar{
+        display: flex;
+        flex-direction: row;
+        margin-right: 2.5vh;
+        justify-content: space-around;
+      }
+
       .card {
         padding: 1vh 2.5vh 2.5vh 2.5vh;
         align-items: center;
@@ -120,4 +141,4 @@ exports.css = `* {
         margin: 0;
       }
     
-    `
+    `;

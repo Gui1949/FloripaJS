@@ -3,7 +3,7 @@ const fs = require("fs");
 let bodyInsert = "";
 let state = "";
 
-const style = require('./styles')
+const style = require("./styles");
 
 exports.createPage = (title, ...body) => {
   return `
@@ -98,7 +98,21 @@ exports.createLine = () => {
 exports.createUpperNavBar = (title, ...items) => {
   let elementTitle = title;
 
-  insert(`<div id="navbar"><h2>${elementTitle}</h2></div>`);
+  if (items[0] == "title-left") {
+    console.log(items)
+    insert(
+      `<div class="navbar title-left">
+        <h2 class='navbar-title'>${elementTitle}</h2>
+        <div class='items-navbar'>
+          <a href='#'>${items[1]}</a>
+          <a href='#'>${items[1]}</a>
+          <a href='#'>${items[1]}</a>
+        </div>
+      </div>`
+    );
+  } else {
+    insert(`<div class="navbar"><h2>${elementTitle}</h2></div>`);
+  }
 };
 
 exports.createCard = (...items) => {
@@ -140,7 +154,7 @@ exports.createButton = (id, value, action) => {
 
 exports.createLink = (path, name) => {
   insert(`<a href=${path}>${name}</a>`);
-}
+};
 
 // exports.generateTextInput = (id, placeholder) => {
 //   insert(`<input type='text' id='generate' placeholder='${placeholder}' />`)
@@ -155,8 +169,8 @@ exports.createLink = (path, name) => {
 // }
 
 exports.insertScript = (script) => {
-  insert(`<script>${script}</script>`)
-}
+  insert(`<script>${script}</script>`);
+};
 
 // exports.blackBody = () => {
 //   insert('<style>body{background-color: #282a36;}</style>')
