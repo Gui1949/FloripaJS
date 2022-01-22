@@ -12,7 +12,7 @@ exports.page = () => {
       "main",
       "https://avatars.githubusercontent.com/u/28566734?v=4",
       "Guilherme Floriano",
-      "21 anos de idade | Guarulhos-SP | Desenvolvedor e Carinha do T.I",
+      "22 anos de idade | Guarulhos-SP | Desenvolvedor e Ex-Carinha do T.I (atualmente carinha do sistema)",
       "https://giffiles.alphacoders.com/209/209661.gif",
       "Você já chegou a abrir um chamado referente a esse assunto?"
     ),
@@ -20,7 +20,7 @@ exports.page = () => {
     Floripa.createSimpleCard(
       "Experiência",
       "SETEMBRO DE 2018 - ABRIL DE 2019",
-      "<b>APRENDIZ DE T.I,</b> FARMAR1 IND. E COMÉRCIO LTDA.",
+      "<b>APRENDIZ DE T.I,</b> FARMARIN IND. E COMÉRCIO LTDA.",
       "Suporte ao usuário, formatação e configuração de computadores, protocolos POP e IMAP, Office 365 e GSuite.",
       "<BR/>",
       "ABRIL DE 2019 - OUTUBRO DE 2020",

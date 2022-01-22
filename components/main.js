@@ -2,7 +2,6 @@ const http = require("http");
 const index = require("../public/index");
 const bar = require("../public/bar");
 const portfolio = require("../public/portfolio");
-const snk = require("../public/snk");
 const blog = require("../public/blog");
 const fs = require("fs");
 const Actions = require('../components/actions')
