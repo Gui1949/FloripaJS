@@ -1,7 +1,6 @@
 const Floripa = require("../components/compiler");
 const Actions = require("../components/actions");
-
-let floripa = new Floripa();
+require('../components/precompile');
 
 class Index extends Floripa {
   constructor() {
@@ -9,15 +8,15 @@ class Index extends Floripa {
   }
 
   render = () => {
-    floripa.createUpperNavBar("FloripaJS", "title-left", "Xavasca");
-    floripa.initDiv("main");
-    floripa.createLine();
-    floripa.createElement("p", "Seja bem-vindo ao FloripaJS!");
-    floripa.endDiv();
+    init()
+    createUpperNavBar("FloripaJS", "title-left");
+    initDiv("main");
+    createElement("p", "Seja bem-vindo ao FloripaJS!");
+    endDiv();
   };
 
   page = () => {
-    return floripa.createPage("FloripaJS", this.render());
+    return createPage("FloripaJS", this.render());
   };
 }
 

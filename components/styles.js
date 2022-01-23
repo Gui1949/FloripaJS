@@ -108,10 +108,14 @@ exports.css = `
         margin: 1.5vh 0 1vh 0;
       }
     
-      #feedUpperMargin{
+      #feedUpperMargin, #main{
         width: 100%;
         margin-top: 10vh;
         align-items: center;
+      }
+
+      #main{
+        align-items: start;
       }
     
       .descript, .descript_header, .descript_card, .descript_footer{

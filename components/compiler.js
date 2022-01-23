@@ -104,11 +104,6 @@ class Floripa{
       this.insert(
         `<div class="navbar title-left">
           <h2 class='navbar-title'>${elementTitle}</h2>
-          <div class='items-navbar'>
-            <a href='#'>${items[1]}</a>
-            <a href='#'>${items[1]}</a>
-            <a href='#'>${items[1]}</a>
-          </div>
         </div>`
       );
     } else {
