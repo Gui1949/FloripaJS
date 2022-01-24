@@ -5,30 +5,38 @@ require("../components/precompile");
 class Index extends Floripa {
   constructor() {
     super();
-
-    this.state = {
-      xablau: "xablix",
-    };
   }
 
-  setState = () => {
-    this.state.xablau = "xableu";
-    init()
-    this.render()
-  };
+  lifeCycle = `
+    this.state = {
+      xablau: "",
+      titulo: ""
+    }
+
+    let setState = () => {
+      console.log(state.xablau)
+      state.xablau = "xableu"
+      state.title = "IIIIIIIIIIIIIIIIIIIHULLLLL"
+      console.log(state.xablau)
+      ${Actions.Commit('state.xablau')}
+      ${Actions.Commit('state.title')}
+    }
+
+    `
+  ;
 
   render = () => {
     init();
+    Actions.Paradox(this.lifeCycle);
     createUpperNavBar("FloripaJS", "title-left");
     initDiv("main");
-    createElement("p", "Seja bem-vindo ao FloripaJS!");
-    createElement("p", this.state.xablau);
-    createButton(1, 1, () => this.setState())
+    createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
+    createElement("p", 'Texto' , "state.xablau");
+    createButton(1, 1, "setState()");
     endDiv();
   };
 
   page = () => {
-    console.log(this.state);
     return createPage("FloripaJS", this.render());
   };
 }
