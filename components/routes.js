@@ -2,12 +2,15 @@ const index = require("../public/index");
 const bar = require("../public/bar");
 const portfolio = require("../public/portfolio");
 const Index = require("../public/index");
+const LDM = require("../public/ldm")
 
 exports.router = (url, res) => {
     if (url === "/bar") {
         res.end(bar.page());
       } else if (url === "/portfolio") {
         res.end(portfolio.page());
+      }else if (url === "/ldm") {
+        res.end(new LDM().page());
       } else if (url === "/") {
         res.end(new Index().page());
       } else {

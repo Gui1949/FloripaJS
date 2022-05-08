@@ -1,15 +1,15 @@
 const index = require("../public/index");
-const bar = require("../public/bar");
-const portfolio = require("../public/portfolio");
-const snk = require("../public/snk");
+const ldm = require("../public/ldm");
 const fs = require("fs");
+const Floripa = require("./compiler");
 
-let pages = ['bar', 'index', 'portfolio', 'snk'];
+let pages = ['ldm'];
 
 pages.forEach((element) => {
   fs.writeFile(
-    `./build/${element}.html`,
-    eval(element).page(),
+    `../build/${element}.html`,
+    // eval(element).page(),
+    new ldm().page(),
     (err) => {
       console.log(err);
     }

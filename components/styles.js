@@ -83,7 +83,6 @@ exports.css = `
         overflow-wrap: break-word;
         background-color: #44475a;
         align-self: flex-start;
-        width: 50%;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -91,6 +90,23 @@ exports.css = `
         box-shadow: 0 0 5px rgba(0,0,0,.2);
       } 
     
+      @media (min-width: 700px) and (orientation: landscape) {
+        .card {
+          width: 70vh;
+          height: 55vh;
+        }
+      }
+
+      @media (orientation: portrait) {
+        .card {
+          width: 80vw;
+          height: 50vh;
+        }
+        .post_img{
+          height:70%;
+        }
+      }
+
       .avatar{
         width: 5vh;
         height: 5vh;
@@ -100,7 +116,7 @@ exports.css = `
       }
     
       .post_img{
-        height:60vh;
+        height: 75%;
         width: 100%;
         object-fit: contain;
         background-color: #282a36;
