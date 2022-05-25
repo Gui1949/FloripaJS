@@ -10,7 +10,8 @@ class Index extends Floripa {
   lifeCycle = `
     this.state = {
       xablau: "",
-      titulo: ""
+      titulo: "",
+      contador: 0
     }
 
     let setState = () => {
@@ -18,12 +19,13 @@ class Index extends Floripa {
       state.xablau = "xableu"
       state.title = "IIIIIIIIIIIIIIIIIIIHULLLLL"
       console.log(state.xablau)
-      ${Actions.Commit('state.xablau')}
-      ${Actions.Commit('state.title')}
+      ${Actions.Commit("state.title")}
+      ${Actions.Commit("state.xablau")}
+      ${Actions.Commit("state.contador")}
+      state.contador++
     }
 
-    `
-  ;
+    `;
 
   render = () => {
     init();
@@ -31,7 +33,8 @@ class Index extends Floripa {
     createUpperNavBar("FloripaJS", "title-left");
     initDiv("main");
     createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
-    createElement("p", 'Texto' , "state.xablau");
+    createElement("p", "Texto", "state.xablau");
+    createElement("p", "Texto", "state.contador");
     createButton(1, 1, "setState()");
     endDiv();
   };

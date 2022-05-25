@@ -19,7 +19,7 @@ class LDM extends Floripa {
       "https://scontent.fgru4-1.fna.fbcdn.net/v/t39.30808-6/278604806_107448565276561_8962520869161897092_n.png?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_eui2=AeFNLbg4cnyhzev7w0j6DmtXs0UTejx4vjqzRRN6PHi-OrvJ0hKAVLACWPq6PKW1xE3I5GWNK_PGhOjdNfsZ7CN0&_nc_ohc=wFIiY6NQzecAX80mhUT&_nc_ht=scontent.fgru4-1.fna&oh=00_AT8Is78dRfF9-M0y8YlCwE7HcXYBgSdWjQFMJ6DE7oUG3w&oe=627BD6B5",
       "Liquidificador da Morte",
       "Melhor que Los Hermanos, Autoramas e Pato FU",
-      "<iframe style='border-radius:12px' src='https://open.spotify.com/embed/album/7dOwSHdEp9gikziApruMew?utm_source=generator'frameBorder='0' class='post_img' allowfullscreen='' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'></iframe>",
+      `<iframe style='border-radius:12px' src='https://open.spotify.com/embed/album/7dOwSHdEp9gikziApruMew?utm_source=generator'frameBorder='0' class='post_img' allowfullscreen='' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'></iframe>`,
       "Xablau"
     );
     this.insertScript(
