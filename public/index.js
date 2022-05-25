@@ -11,17 +11,20 @@ class Index extends Floripa {
     this.state = {
       xablau: "",
       titulo: "",
-      contador: 0
+      contador: 0,
+      textbox: ""
     }
 
     let setState = () => {
       console.log(state.xablau)
+      state.textbox = ${Actions.getValue('id')}
       state.xablau = "xableu"
       state.title = "IIIIIIIIIIIIIIIIIIIHULLLLL"
       console.log(state.xablau)
       ${Actions.Commit("state.title")}
       ${Actions.Commit("state.xablau")}
       ${Actions.Commit("state.contador")}
+      ${Actions.Commit("state.textbox")}
       state.contador++
     }
 
@@ -34,8 +37,11 @@ class Index extends Floripa {
     initDiv("main");
     createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
     createElement("p", "Texto", "state.xablau");
+    createElement("p", "Texto", "state.textbox");
     createElement("p", "Texto", "state.contador");
     createButton(1, 1, "setState()");
+    this.createText('Digite algo aqui:')
+    this.createTextInput('id')
     endDiv();
   };
 
