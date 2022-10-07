@@ -27,7 +27,6 @@ class Index extends Floripa {
       ${Actions.Commit("state.textbox")}
       state.contador++
     }
-
     `;
 
   render = () => {
@@ -40,8 +39,8 @@ class Index extends Floripa {
     createElement("p", "Texto", "state.textbox");
     createElement("p", "Texto", "state.contador");
     createButton(1, 1, "setState()");
-    this.createText('Digite algo aqui:')
-    this.createTextInput('id')
+    this.createText("Digite algo aqui:");
+    this.createTextInput("id");
     endDiv();
   };
 

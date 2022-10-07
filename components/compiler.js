@@ -7,6 +7,7 @@ const style = require("./styles");
 
 class Floripa {
   createPage = (title, ...body) => {
+    console.log(title)
     return `
       <!DOCTYPE html>
       <html lang="pt-br">
@@ -23,7 +24,7 @@ class Floripa {
               <title>${title}</title>
           </head>
           <body>
-              ${bodyInsert}
+              ${bodyInsert ? bodyInsert : body}
           </body>
       </html>
       `;
