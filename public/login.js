@@ -15,43 +15,19 @@ class Login extends Floripa {
     super();
   }
 
-  lifeCycle = `
-    this.state = {
-      textbox: "",
-      senha: ""
-    }
-
-    let setState = () => {
-      state.textbox = ${Actions.getValue("id")}
-      state.senha = ${Actions.getValue("senha")}
-      
-      const options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams({username: state.textbox, senha: state.senha})
-      };
-      
-      fetch('http://localhost:3000/login', options)
-        .then(response => response.json())
-        .then(response => window.alert(response))
-        .catch(err => console.error(err));
-    } 
-    `;
-
-  // render = () => {
-  //   init();
-  //   Actions.Paradox(this.lifeCycle);
-  //   createUpperNavBar("Teste Sankhya", "title-left");
-  //   initDiv("main");
-  //   this.createText("Digite algo aqui:");
-  //   this.createTextInput("id");
-  //   this.createTextInput("senha");
-  //   createButton(1, 1, "setState()");
-  //   endDiv();
-  // };
-
   page = () => {
-    // return createPage("Teste Sankhya", this.render());
+    // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
+    data = data.replace('$id', Actions.getValue("$id"));
+    data = data.replace(
+      '$senha',
+      Actions.getValue("$senha")
+    );
+    data = data.replace("Begin Function", "<script>");
+    data = data.replace(`End Function`, "</script>");
+    data = data.replace(`Begin JSX`, "<div>");
+    data = data.replace(`End JSX`, "</div>");
+    // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
+
     return createPage("Teste Sankhya", data);
   };
 }

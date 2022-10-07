@@ -9,6 +9,8 @@ const server = http.createServer((req, res) => {
 
   console.log(req.url);
 
+  //Se eu passar o req.body aqui no Routes.router, eu consigo fazer um servidor REST!
+  //E aí eu vou ter front e backend juntos, ao mesmo tempo!!
   Routes.router(req.url, res)
 
 });

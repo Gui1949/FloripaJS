@@ -1,3 +1,31 @@
-Como é uma extensão nova, vou ter que compilar essa maravilha
+Begin Function
+    window.alert('Olá Mundo')
 
-<h1>Olá mundo!</h1>
+    this.state = {
+      textbox: "",
+      senha: ""
+    }
+
+    let setState = () => {
+      state.textbox = $id
+      state.senha = $senha
+      
+      const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({username: state.textbox, senha: state.senha})
+      };
+      
+      fetch('http://localhost:3000/login', options)
+        .then(response => response.json())
+        .then(response => window.alert(response))
+        .catch(err => console.error(err));
+    } 
+End Function
+
+Begin JSX
+    <h1>Login Sankhya</h1>
+    <input type='text' id="$id"/>
+    <input type='password' id="$senha"/>
+    <button onclick='setState()'/>Entrar</button>
+End JSX
