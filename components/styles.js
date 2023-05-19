@@ -12,8 +12,10 @@ exports.css = `
       }
       
       .btn{
-        width: 50px;
-        height: 50px;
+        width: 5vw;
+        height: 5vh;
+        background-color: white;
+        color: #282a36;
       }
     
       h1,
@@ -48,7 +50,7 @@ exports.css = `
     
       .navbar{
         z-index: 1;
-        position: fixed;
+        position: absolute;
         top: 0;
         width: 100%;
         height: 8vh;
@@ -83,24 +85,30 @@ exports.css = `
         overflow-wrap: break-word;
         background-color: #44475a;
         align-self: flex-start;
+        flex: 1;
+        flex-shrink: 1;
         display: block;
         margin-left: auto;
         margin-right: auto;
         border-radius: 1vh;
-        box-shadow: 0 0 5px rgba(0,0,0,.2);
-      } 
+        box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+        height: auto;
+      }
+
+      .card_principal{
+        display: inherit;
+      }
+      
     
       @media (min-width: 700px) and (orientation: landscape) {
         .card {
-          width: 70vh;
-          height: 55vh;
+          width: 45vw;
         }
       }
 
       @media (orientation: portrait) {
         .card {
           width: 80vw;
-          height: 50vh;
         }
         .post_img{
           height:70%;
@@ -116,7 +124,7 @@ exports.css = `
       }
     
       .post_img{
-        height: 75%;
+        height: 60%;
         width: 100%;
         object-fit: contain;
         background-color: #282a36;

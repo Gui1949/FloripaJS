@@ -9,7 +9,13 @@ global.initDiv = (id) => new Floripa().initDiv(id);
 
 global.endDiv = () => new Floripa().endDiv();
 
+global.createCard = (...items) => new Floripa().createCard(...items)
+
+global.createSimpleCard = (title, ...items) => new Floripa().createSimpleCard(title, ...items)
+
 global.createLine = () => new Floripa().createLine();
+
+global.createText = (value) => new Floripa().createText(value);
 
 global.createElement = (element, ...value) =>
   new Floripa().createElement(element, ...value);

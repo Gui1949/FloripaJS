@@ -114,7 +114,7 @@ class Floripa {
 
   createCard = (...items) => {
     this.insert(
-      `<div class="card" id=${items[0]}>
+      `<div class="card card_principal" id=${items[0]}>
         <div class="card_header">
           <img class="avatar" src="${items[1]}"/>
           <div class='descript_header'>

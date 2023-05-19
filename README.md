@@ -11,26 +11,50 @@ O FloripaJS é um Framework para Web desenvolvido em Node.JS. Tendo em vista pra
 
 O FloripaJS foi desenvolvido para ser um framework de uso simples e prático, para ser criada uma página, bastam poucas linhas:
 ```
-const Floripa = require("../compiler");
+const Floripa = require("../components/compiler");
+const Actions = require("../components/actions");
+require("../components/precompile");
 
-exports.page = () => {
-  Floripa.init();
-  return Floripa.createPage(
-    "FloripaJS",
-    Floripa.createTitle("FloripaJS"),
-    Floripa.initDiv("master"),
-    Floripa.createLine("hr"),
-    Floripa.createElement("p", "Seja bem-vindo ao FloripaJS!"),
-    Floripa.endDiv(),
-  );
-};
+class Index extends Floripa {
+  constructor() {
+    super();
+  }
+
+  lifeCycle = `
+    this.state = {
+      contador: 0
+    }
+
+    let setState = () => {
+      ${Actions.Commit("state.contador")}
+      state.contador++
+    }
+    `;
+
+  render = () => {
+    init(); // -> Inicia a página
+    Actions.Paradox(this.lifeCycle); // -> Funções executadas por dentro do DOM 
+    createUpperNavBar("FloripaJS", "title-left");
+    initDiv("main");
+    createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
+    createElement("p", "0", "state.contador");
+    createButton('id', 'Adicionar', "setState()");
+    endDiv();
+  };
+
+  page = () => {
+    return createPage("FloripaJS", this.render());
+  };
+}
+
+module.exports = Index;
 ```
 Com o código acima, é criada a página a seguir:
 
 ![PrintScreen](https://github.com/Gui1949/FloripaJS/blob/master/blob/print.png)
 <p align="center">Imagem 1</p>
 
-Todas as páginas devem ser criadas no caminho ```./public```. As mesmas devem seguir o padrão estabelecido acima, e devem ser referenciadas no arquivo ```./main.js``` de duas maneiras:
+Todas as páginas devem ser criadas no caminho ```./public```. As mesmas devem seguir o padrão estabelecido acima, e devem ser referenciadas no arquivo ```./routes.js``` da seguinte maneira:
   * A página deve ser requerida via ```const nome_pagina = require("./public/nome_pagina");```;
   * E deve ser criada uma rota:
  
@@ -41,94 +65,67 @@ Todas as páginas devem ser criadas no caminho ```./public```. As mesmas devem s
       ```
   * Levando em consideração que "nome_pagina" deve ser substituído pelo nome da página a ser inserida.
 
-Feitas as medidas acima, o arquivo ```./main.js``` ficará da seguinte maneira:
-
-```
-const http = require("http");
-
-const index = require("./public/index");
-const nome_pagina = require("./public/nome_pagina");
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
-  let url = req.url;
-
-  if (url === "/nome_pagina") {
-    res.end(nome_pagina.page());
-  }
-
-  else{
-    res.end(index.page());
-  }
-  
-});
-
-server.listen(25565, "127.0.0.1");
-console.log("Server abrido!! Porta 25565");
-
-```
-
 ## Comandos
 
 Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da página em si (nesse caso, use o ```./public/index.js``` como exemplo).
 
-```Floripa.init();```
+```init();```
   * Determina o início da página e limpa a mesma.
   * Esse comando não possui parâmetros.
 
-```Floripa.createPage(titulo da página, corpo);```
+```createPage(titulo da página, corpo);```
   * Título da página: texto a ser exibido na aba do navegador;
   * Corpo: Elementos a serem inseridos no corpo da página (Os elementos devem ser separados por vírgula, sendo os mesmos declarados via comandos de criação (comandos com o prefixo create e init), da seguinte forma:
   ```
-    Floripa.createTitle("FloripaJS"),
-    Floripa.initDiv("master"),
-    Floripa.createLine("hr"),
-    Floripa.createElement("p", "Seja bem-vindo ao FloripaJS!"),
-    Floripa.endDiv(),
+    createTitle("FloripaJS"),
+    initDiv("master"),
+    createLine("hr"),
+    createElement("p", "Seja bem-vindo ao FloripaJS!"),
+    endDiv(),
   ```
   
-```Floripa.initDiv(id);```
+```initDiv(id);```
   * Cria e inicia um container de elementos;
-  * Para finalizar o escopo do container, deve ser usado o comando ```Floripa.endDiv();```.
+  * Para finalizar o escopo do container, deve ser usado o comando ```endDiv();```.
   
-```Floripa.endDiv();```
+```endDiv();```
   * Encerra o escopo de um container de elementos;
   * Esse comando não possui parâmetros.
 
-```Floripa.initMaster();```
+```initMaster();```
   * Cria e inicia um container mestre;
-  * Para finalizar o escopo do container, deve ser usado o comando ```Floripa.endMaster();```.
+  * Para finalizar o escopo do container, deve ser usado o comando ```endMaster();```.
   * Esse comando não possui parâmetros.
   
-```Floripa.endMaster();```
+```endMaster();```
   * Encerra o escopo de um container mestre;
   * Esse comando não possui parâmetros.
 
-```Floripa.createElement(tag do elemento em HTML, valor (caso necessário), id);```
+```createElement(tag do elemento em HTML, valor (caso necessário), id);```
   * Cria um elemento na tela, usando em base a TAG do mesmo em HTML;
   * Somente o campo de tag do elemento é obrigatório
 
-```Floripa.createTitle(texto, id do elemento);```
+```createTitle(texto, id do elemento);```
   * Insere um elemento de título na página;
   * Nenhum dos campos é obrigatório.
   
-```Floripa.createLine();```
+```createLine();```
   * Cria uma linha horizontal que corta toda a tela;
   * Esse comando não possui parâmetros. 
  
-```Floripa.createText(texto);```
+```createText(texto);```
   * Cria um parágrafo;
   * O campo é obrigatório;
 
-```Floripa.createUpperNavBar(titulo, itens);```
+```createUpperNavBar(titulo, itens);```
   * Cria uma navigation bar no topo da tela;
   * O único campo obrigatório é o título;
 
-```Floripa.createCard(id, url da foto do avatar, titulo, subtitulo, url da postagem, descrição);```
+```createCard(id, url da foto do avatar, titulo, subtitulo, url da postagem, descrição);```
   * Cria um card, totalmente baseado em redes sociais;
   * Nenhum dos campos é obrigatório;
 
-```Floripa.createSimpleCard(titulo, textos);```
+```createSimpleCard(titulo, textos);```
   * Cria um card com um título e vários parágrafos;
   * O único campo obrigatório é o título;
 
