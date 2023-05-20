@@ -51,7 +51,6 @@ class Portfolio extends Floripa {
         "Resolução de problemas;",
         "Inovação;"
       ),
-      createText("Site criado com <a href='https://github.com/Gui1949/FloripaJS'>FloripaJS</a>"),
       endDiv(),
       endDiv();
   };

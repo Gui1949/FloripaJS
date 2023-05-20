@@ -80,19 +80,16 @@ exports.css = `
 
       .card {
         padding: 1vh 2.5vh 2.5vh 2.5vh;
-        align-items: center;
+        align-items: left;
         margin-top: 2vh;
         overflow-wrap: break-word;
         background-color: #44475a;
-        align-self: flex-start;
-        flex: 1;
-        flex-shrink: 1;
-        display: block;
+        align-self: flex-start;        
         margin-left: auto;
         margin-right: auto;
         border-radius: 1vh;
         box-shadow: 0 0 5px rgba(0, 0, 0, .2);
-        height: auto;
+        height:auto;
       }
 
       .card_principal{
@@ -124,7 +121,7 @@ exports.css = `
       }
     
       .post_img{
-        height: 60%;
+        height: 60vh;
         width: 100%;
         object-fit: contain;
         background-color: #282a36;

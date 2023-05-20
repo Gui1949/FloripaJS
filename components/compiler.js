@@ -25,6 +25,12 @@ class Floripa {
           </head>
           <body>
               ${bodyInsert ? bodyInsert : body}
+              <center>
+                <p class="descript_footer">
+                Site criado com
+                <a href="https://github.com/Gui1949/FloripaJS">FloripaJS</a>
+                </p>
+              </center>
           </body>
       </html>
       `;
