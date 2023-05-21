@@ -19,10 +19,15 @@ exports.css = `
       }
     
       h1,
+      h2,
       p, 
       input,
       hr {
         margin: 1vh 2vh 1vh 2vh;
+      }
+
+      li{
+        margin: 1vh 2vh 2vh 4vh;
       }
     
       h1{

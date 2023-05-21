@@ -7,7 +7,7 @@ const style = require("./styles");
 
 class Floripa {
   createPage = (title, ...body) => {
-    console.log(title)
+    console.log(title);
     return `
       <!DOCTYPE html>
       <html lang="pt-br">
@@ -178,6 +178,11 @@ class Floripa {
 
   insertScript = (script) => {
     this.insert(`<script>${script}</script>`);
+  };
+
+  insertArrowFunction = (script) => {
+    let alterado = script.replace("() => {", "");
+    this.insert(`<script>${alterado}</script>`);
   };
 }
 

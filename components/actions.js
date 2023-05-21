@@ -8,6 +8,10 @@ exports.Paradox = (...params) => {
   new Floripa().insertScript(`${params[0]}`)
 }
 
+exports.Function = (...params) => {
+  new Floripa().insertArrowFunction(`${params[0]}`)
+}
+
 exports.Commit = (param) => {
  return(`document.getElementById('${param}').innerHTML = ${param}`)
 }
