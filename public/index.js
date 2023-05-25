@@ -7,25 +7,23 @@ class Index extends Floripa {
     super();
   }
 
-  lifeCycle = `
-    this.state = {
-      contador: 0
-    }
-
-    let setState = () => {
-      ${Actions.Commit("state.contador")}
-      state.contador++
-    }
-    `;
-
   render = () => {
     init(); // -> Inicia a página
-    Actions.Paradox(this.lifeCycle); // -> Funções executadas por dentro do DOM 
+
+    Actions.Paradox(
+      Actions.state("contador", 0),
+      Actions.Function(
+        "setState",
+        Actions.Commit("contador_label", "contador"),
+        Actions.sumState("contador")
+      )
+    ); // -> Funções executadas por dentro do DOM
+
     createUpperNavBar("FloripaJS", "title-left");
     initDiv("main");
     createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
-    createElement("p", "0", "state.contador");
-    createButton('id', 'Adicionar', "setState()");
+    createElement("p", "0", "contador_label");
+    createButton("id", "Adicionar", "setState()");
     endDiv();
   };
 

@@ -27,7 +27,7 @@ exports.css = `
       }
 
       li{
-        margin: 1vh 2vh 2vh 4vh;
+        margin: 1vh 2vh 2vh 6vh;
       }
     
       h1{
@@ -87,6 +87,7 @@ exports.css = `
         padding: 1vh 2.5vh 2.5vh 2.5vh;
         align-items: left;
         margin-top: 2vh;
+        margin-bottom: 2vh;
         overflow-wrap: break-word;
         background-color: #44475a;
         align-self: flex-start;        

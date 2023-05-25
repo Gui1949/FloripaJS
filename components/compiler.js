@@ -80,6 +80,10 @@ class Floripa {
     this.insert(`<${element} id="${elementId}">${elementValue}</${element}>`);
   };
 
+  createImage = (src) => {
+    this.insert(`<img src="${src}" class="post_img">`)
+  }
+
   createTitle = (...value) => {
     let elementValue = value[0];
     let elementId = value[1];
