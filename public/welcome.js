@@ -26,7 +26,7 @@ class WelcomePage extends Floripa {
     createUpperNavBar("FloripaJS", "title-left");
     initDiv("main");
     createElement("h1", this.state.title); // Exibe o título vindo do estado
-    this.createImage("")
+    this.createImage("https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/logo_name.png")
     createElement("p", this.state.description); // Exibe a descrição vinda do estado
     createElement("h2", "Recursos do FloripaJS:");
     createElement("ul");
