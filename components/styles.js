@@ -64,12 +64,17 @@ exports.css = `
         display: flex;
         overflow-x: auto;
         align-items: center;
+        vertical-align: middle;
         flex-direction: row;
         justify-content: center;
       }
 
       .navbar.title-left{
           justify-content: space-between;
+      }
+
+      .navbar.image{
+        justify-content: start;
       }
 
       .navbar-title{

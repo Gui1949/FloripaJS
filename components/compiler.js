@@ -19,6 +19,7 @@ class Floripa {
           <head>
               <meta charset="UTF-8">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <link rel="icon" sizes="32x32" type="image/png" href="https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/icon.ico"/>
               <script type="text/javascript" src="actions.js"></script>
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>${title}</title>
@@ -81,8 +82,8 @@ class Floripa {
   };
 
   createImage = (src) => {
-    this.insert(`<img src="${src}" class="post_img">`)
-  }
+    this.insert(`<img src="${src}" class="post_img">`);
+  };
 
   createTitle = (...value) => {
     let elementValue = value[0];
@@ -115,6 +116,15 @@ class Floripa {
       this.insert(
         `<div class="navbar title-left">
           <h2 class='navbar-title'>${elementTitle}</h2>
+        </div>`
+      );
+    } else if (items[0] == "title-left-image") {
+      this.insert(
+        `<div class="navbar title-left image" style="vertical-align: middle">
+        <img src="${items[1]}" height="65%" style="margin-left: 2vh"/>
+          <h2>
+            ${elementTitle}
+          </h2>
         </div>`
       );
     } else {
