@@ -4,7 +4,7 @@ Begin Function
     this.state = {
       textbox: "",
       senha: ""
-    }
+    } 
 
     let setState = () => {
       state.textbox = $id

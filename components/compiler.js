@@ -174,6 +174,74 @@ class Floripa {
     });
 
     this.insert(`</div>`);
+  };  
+  
+  createRPGCanvas = (id) => {
+      this.insert(`
+      <div id="main">
+        <div id="canvas">
+          <canvas id="${id}"></canvas>
+        </div>
+      </div>
+      `);
+
+      this.insert(`  
+      
+      <script>
+      // Get the canvas element and its 2D drawing context
+      var canvas = document.getElementById("${id}");
+      var ctx = canvas.getContext("2d");
+  
+      // Set the initial position of the object
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
+  
+      // Define the object size and speed
+      var objectSize = 50;
+      var objectSpeed = 5;
+  
+      // Create an image object
+      var image = new Image();
+      image.src = "https://th.bing.com/th/id/R.834cdd5530faa0f0a9a4e87731241e18?rik=cKpopfrfdmgkxg&riu=http%3a%2f%2fpixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com%2fimage%2f9a0d2b4fd238cdb.png&ehk=pAmuFoxI%2bgsDkI3VzON%2bP%2f76uzT3BPeK1O7fRMXxSBo%3d&risl=&pid=ImgRaw&r=0"; // Replace with the path to your image
+  
+      // Wait for the image to load
+      image.onload = function() {
+        // Event listener to handle arrow key presses
+        document.addEventListener("keydown", handleKeyPress, false);
+  
+        // Function to handle arrow key presses
+        function handleKeyPress(e) {
+          // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
+          switch (e.keyCode) {
+            case 37: // left arrow
+              x -= objectSpeed;
+              image.src = "https://th.bing.com/th/id/OIP.2i5sfWcqOWzA3T2keaNlgwHaHa?pid=ImgDet&rs=1"
+              break;
+            case 38: // up arrow
+              y -= objectSpeed;
+              break;
+            case 39: // right arrow
+              x += objectSpeed;
+              break;
+            case 40: // down arrow
+              y += objectSpeed;
+              break;
+          }
+  
+          // Redraw the canvas
+          drawCanvas();
+        }
+  
+        // Function to clear the canvas and draw the object
+        function drawCanvas() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(image, x, y, objectSize, objectSize);
+        }
+  
+        // Initial drawing of the canvas
+        drawCanvas();
+      };
+    </script>`);
   };
 
   createTextInput = (id, placeholder, onchange, value) => {

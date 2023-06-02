@@ -88,8 +88,8 @@ exports.css = `
         justify-content: space-around;
       }
 
-      .card {
-        padding: 1vh 2.5vh 2.5vh 2.5vh;
+      .card, #canvas {
+        padding: 2.5vh 2.5vh 2.5vh 2.5vh;
         align-items: left;
         margin-top: 2vh;
         margin-bottom: 2vh;
@@ -101,6 +101,16 @@ exports.css = `
         border-radius: 1vh;
         box-shadow: 0 0 5px rgba(0, 0, 0, .2);
         height:auto;
+      }
+
+      canvas{
+        height: auto;
+        border-radius: 1vh;
+        width: 100vh;
+      }
+
+      #game_rpg, .game_rpg{
+        background-color: white;
       }
 
       .card_principal{

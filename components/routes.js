@@ -1,5 +1,5 @@
 const index = require("../public/index");
-const bar = require("../public/bar");
+const Game = require("../public/game");
 const Portfolio = require("../public/portfolio");
 const Index = require("../public/index");
 const LDM = require("../public/ldm");
@@ -7,8 +7,8 @@ const Login = require("../public/login");
 const Welcome = require("../public/welcome")
 
 exports.router = (url, res) => {
-  if (url === "/bar") {
-    res.end(bar.page());
+  if (url === "/game") {
+    res.end(new Game().page());
   } else if (url === "/portfolio") {
     res.end(new Portfolio().page());
   } else if (url === "/welcome") {

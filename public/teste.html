@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="400"></canvas>
+
+  <script>
+    // Get the canvas element and its 2D drawing context
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Set the initial position of the object
+    var x = canvas.width / 2;
+    var y = canvas.height / 2;
+
+    // Define the object size and speed
+    var objectSize = 50;
+    var objectSpeed = 5;
+
+    // Event listener to handle arrow key presses
+    document.addEventListener("keydown", handleKeyPress, false);
+
+    // Function to handle arrow key presses
+    function handleKeyPress(e) {
+      // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
+      switch (e.keyCode) {
+        case 37: // left arrow
+          x -= objectSpeed;
+          break;
+        case 38: // up arrow
+          y -= objectSpeed;
+          break;
+        case 39: // right arrow
+          x += objectSpeed;
+          break;
+        case 40: // down arrow
+          y += objectSpeed;
+          break;
+      }
+
+      // Redraw the canvas
+      drawCanvas();
+    }
+
+    // Function to clear the canvas and draw the object
+    function drawCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(x, y, objectSize, objectSize);
+    }
+
+    // Initial drawing of the canvas
+    drawCanvas();
+  </script>
+</body>
+</html>
