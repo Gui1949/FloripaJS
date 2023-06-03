@@ -106,7 +106,11 @@ exports.css = `
       canvas{
         height: auto;
         border-radius: 1vh;
-        width: 100vh;
+        width: 100%;
+      }
+
+      #canvas{
+        width: 65%
       }
 
       #game_rpg, .game_rpg{

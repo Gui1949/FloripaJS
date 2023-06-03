@@ -1,61 +1,139 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    canvas {
-      border: 1px solid black;
-    }
-  </style>
-</head>
-<body>
-  <canvas id="myCanvas" width="400" height="400"></canvas>
+  <head>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
 
-  <script>
-    // Get the canvas element and its 2D drawing context
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
+    <script>
+      // Get the canvas element and its 2D drawing context
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
 
-    // Set the initial position of the object
-    var x = canvas.width / 2;
-    var y = canvas.height / 2;
+      // Set the initial position of the object and camera
+      var objectX = canvas.width / 2;
+      var objectY = canvas.height / 2;
 
-    // Define the object size and speed
-    var objectSize = 50;
-    var objectSpeed = 5;
+      var cameraX = 0;
+      var cameraY = 0;
 
-    // Event listener to handle arrow key presses
-    document.addEventListener("keydown", handleKeyPress, false);
+      // Define the object size and speed
+      var objectSize = 50;
+      var objectSpeed = 5;
 
-    // Function to handle arrow key presses
-    function handleKeyPress(e) {
-      // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
-      switch (e.keyCode) {
-        case 37: // left arrow
-          x -= objectSpeed;
-          break;
-        case 38: // up arrow
-          y -= objectSpeed;
-          break;
-        case 39: // right arrow
-          x += objectSpeed;
-          break;
-        case 40: // down arrow
-          y += objectSpeed;
-          break;
+      // Function to load an image asynchronously
+      function loadImage(image) {
+        return new Promise(function (resolve, reject) {
+          image.onload = resolve;
+          image.onerror = reject;
+        });
       }
 
-      // Redraw the canvas
-      drawCanvas();
-    }
+      // Create an image object for the background map
+      var backgroundImage = new Image();
+      backgroundImage.src =
+        "https://img.itch.zone/aW1hZ2UvNDg3NjA3LzI1MTgyMDEuanBn/original/8zGu0J.jpg"; // Replace with the path to your background image
 
-    // Function to clear the canvas and draw the object
-    function drawCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillRect(x, y, objectSize, objectSize);
-    }
+      var imagePaths = [
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/up.png",
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/down.png",
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/left.png",
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/right.png",
+      ];
 
-    // Initial drawing of the canvas
-    drawCanvas();
-  </script>
-</body>
+      // Create an image object for the character
+      // Create an array of image objects
+      var images = [];
+      var currentImage = 0;
+
+      // Load all the images
+      for (var i = 0; i < imagePaths.length; i++) {
+        var image = new Image();
+        image.src = imagePaths[i];
+        images.push(image);
+      }
+
+      // Wait for the images to load
+      Promise.all([loadImage(backgroundImage), loadImage(images[currentImage])])
+        .then(function () {
+          // Event listener to handle arrow key presses
+          document.addEventListener("keydown", handleKeyPress, false);
+
+          // Function to handle arrow key presses
+          function handleKeyPress(e) {
+            // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
+            // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
+            switch (e.keyCode) {
+              case 37: // left arrow
+                objectX -= objectSpeed;
+                currentImage = 2;
+                break;
+              case 38: // up arrow
+                objectY -= objectSpeed;
+                currentImage = 0;
+                break;
+              case 39: // right arrow
+                objectX += objectSpeed;
+                currentImage = 3;
+                break;
+              case 40: // down arrow
+                objectY += objectSpeed;
+                currentImage = 1;
+                break;
+              case 32:
+                let interval = setInterval(() => {
+                  currentImage = (currentImage + 1) % images.length;
+                }, 50);
+
+                setTimeout(() => {
+                  clearInterval(interval);
+                }, 500);
+
+                break;
+            }
+
+            // Update camera position based on object position
+            cameraX = objectX - canvas.width / 2;
+            cameraY = objectY - canvas.height / 2;
+
+            // Redraw the canvas
+            drawCanvas();
+          }
+
+          // Function to clear the canvas and draw the background and object
+          function drawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the background map
+            ctx.drawImage(
+              backgroundImage,
+              -cameraX,
+              -cameraY,
+              canvas.width,
+              canvas.height
+            );
+
+            // Draw the character
+            ctx.drawImage(
+              images[currentImage],
+              objectX - cameraX,
+              objectY - cameraY,
+              objectSize,
+              objectSize
+            );
+          }
+
+          // Initial drawing of the canvas
+          drawCanvas();
+        })
+        .catch(function (error) {
+          console.error("Failed to load images:", error);
+        });
+    </script>
+  </body>
 </html>
