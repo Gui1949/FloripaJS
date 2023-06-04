@@ -229,20 +229,31 @@ class Floripa {
         ${spriteArray}
       ];
 
+      let imagePathsEnemy = [
+
+      ];
+
       // Create an image object for the character
       // Create an array of image objects
       var images = [];
+      let enemy_img = [];
       var currentImage = 0;
 
       // Load all the images
       for (var i = 0; i < imagePaths.length; i++) {
-        var image = new Image();
+        let image = new Image();
         image.src = imagePaths[i];
         images.push(image);
       }
 
+      for (var i = 0; i < imagePathsEnemy.length; i++) {
+        let image = new Image();
+        image.src = imagePaths[i];
+        enemy_img.push(image);
+      }
+
       // Wait for the images to load
-      Promise.all([loadImage(backgroundImage), loadImage(images[currentImage])])
+      Promise.all([loadImage(backgroundImage), loadImage(images[currentImage], loadImage(enemy[currentEnemy]))])
         .then(function () {
           // Event listener to handle arrow key presses
           document.addEventListener("keydown", handleKeyPress, false);
