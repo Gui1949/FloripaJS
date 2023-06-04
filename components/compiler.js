@@ -199,6 +199,10 @@ class Floripa {
       this.insert(`    <script>
       // Get the canvas element and its 2D drawing context
       var canvas = document.getElementById("${id}");
+
+      canvas.style.backgroundImage = "url('https://i.pinimg.com/originals/3b/bd/9d/3bbd9d6ba1f20ab97f96e47729464a26.jpg')"
+      canvas.style.backgroundSize = "contain"
+
       var ctx = canvas.getContext("2d");
 
       // Set the initial position of the object and camera
@@ -230,7 +234,10 @@ class Floripa {
       ];
 
       let imagePathsEnemy = [
-
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/enemies/sprite_0.png",
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/enemies/sprite_1.png",
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/enemies/sprite_2.png",
+        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/enemies/sprite_3.png"
       ];
 
       // Create an image object for the character
@@ -238,6 +245,9 @@ class Floripa {
       var images = [];
       let enemy_img = [];
       var currentImage = 0;
+      var currentEnemy = 0;
+
+      let enemyX = Math.floor(Math.random() * (800 - 300) + 300);
 
       // Load all the images
       for (var i = 0; i < imagePaths.length; i++) {
@@ -246,14 +256,14 @@ class Floripa {
         images.push(image);
       }
 
-      for (var i = 0; i < imagePathsEnemy.length; i++) {
+      for (var j = 0; j < imagePathsEnemy.length; j++) {
         let image = new Image();
-        image.src = imagePaths[i];
+        image.src = imagePathsEnemy[j];
         enemy_img.push(image);
       }
 
       // Wait for the images to load
-      Promise.all([loadImage(backgroundImage), loadImage(images[currentImage], loadImage(enemy[currentEnemy]))])
+      Promise.all([loadImage(backgroundImage), loadImage(images[currentImage], loadImage(enemy_img[currentEnemy]))])
         .then(function () {
           // Event listener to handle arrow key presses
           document.addEventListener("keydown", handleKeyPress, false);
@@ -299,8 +309,16 @@ class Floripa {
             drawCanvas();
           }
 
+          //Animation enemy
+          setInterval(() => {
+            currentEnemy = (currentEnemy + 1) % enemy_img.length;
+          }, 1000);
+
           // Function to clear the canvas and draw the background and object
           function drawCanvas() {
+
+
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             var offset = Math.sin(Date.now() / 500) * 2;
@@ -320,6 +338,21 @@ class Floripa {
               objectSize,
               objectSize
             );
+
+            // Draw the enemy
+            ctx.drawImage(
+              enemy_img[currentEnemy],
+              -cameraX + enemyX,
+              -cameraY + offset,
+              30,
+              30
+            );
+
+            //Colisão
+            if(objectX - cameraX == -cameraX + enemyX){
+              console.log('corinthians')
+            }
+
           }
     
           // Initial drawing of the canvas
