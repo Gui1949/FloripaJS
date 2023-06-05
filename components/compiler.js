@@ -247,7 +247,8 @@ class Floripa {
       var currentImage = 0;
       var currentEnemy = 0;
 
-      let enemyX = Math.floor(Math.random() * (800 - 300) + 300);
+      let enemyX = Math.floor(Math.random() * (1000 - 100) + 100);
+      let enemyY = Math.floor(Math.random() * (100 - 10) + 10);
 
       // Load all the images
       for (var i = 0; i < imagePaths.length; i++) {
@@ -343,20 +344,32 @@ class Floripa {
             ctx.drawImage(
               enemy_img[currentEnemy],
               -cameraX + enemyX,
-              -cameraY + offset,
+              -cameraY + enemyY + offset,
               30,
               30
-            );
+            );          
 
-            //Colisão
-            if(objectX - cameraX == -cameraX + enemyX){
-              console.log('corinthians')
+            //Colisão RPG
+            if(
+              (objectX - cameraX >= (-cameraX + enemyX) - 80 && objectX - cameraX <= (-cameraX + enemyX) + 30)
+              &&
+              (objectY - cameraY + offset >= (-cameraY + enemyY + offset) - 80 && objectY - cameraY + offset <= (-cameraY + enemyY + offset) + 30)
+              ){
+                ctx.fillStyle = "white";
+                ctx.font = "bold 18px Arial";
+                ctx.fillText("Boa noite, filho", 5, canvas.height - 5);
             }
 
           }
     
           // Initial drawing of the canvas
           function animateCanvas() {
+
+            console.log(-cameraX + enemyX,-cameraY + enemyX)
+
+            let playerX = objectX - cameraX;
+            let enemyX0 = -cameraX + enemyX
+
             drawCanvas();
             requestAnimationFrame(animateCanvas);
           }
