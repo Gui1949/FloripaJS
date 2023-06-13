@@ -1,139 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      canvas {
-        border: 1px solid black;
+<head>
+  <title>Canvas de Detecção de Cliques e Segurar</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="500" height="300"></canvas>
+
+  <script>
+    // Obtendo a referência para o elemento canvas
+    var canvas = document.getElementById("myCanvas");
+
+    // Obtendo o contexto 2D do canvas
+    var ctx = canvas.getContext("2d");
+
+    // Variável para controlar se o botão do mouse está sendo segurado
+    var isMouseDown = false;
+
+    // Função para lidar com o evento de clique e segurar no canvas
+    function handleMouseDown(event) {
+      isMouseDown = true;
+    }
+
+    // Função para lidar com o evento de soltar o botão do mouse
+    function handleMouseUp(event) {
+      isMouseDown = false;
+    }
+
+    // Função para lidar com o evento de movimento do mouse no canvas
+    function handleMouseMove(event) {
+      // Verificar se o botão do mouse está sendo segurado
+      if (isMouseDown) {
+        // Obtendo as coordenadas do movimento do mouse em relação ao canvas
+        var rect = canvas.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+
+        // Exibindo as coordenadas do movimento do mouse no console
+        console.log("Arrastando em (" + x + ", " + y + ")");
+
+        // Realizando alguma ação com as coordenadas (exemplo: desenhar um círculo)
+        ctx.beginPath();
+        ctx.arc(x, y, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.closePath();
       }
-    </style>
-  </head>
-  <body>
-    <canvas id="myCanvas" width="400" height="400"></canvas>
+    }
 
-    <script>
-      // Get the canvas element and its 2D drawing context
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
-
-      // Set the initial position of the object and camera
-      var objectX = canvas.width / 2;
-      var objectY = canvas.height / 2;
-
-      var cameraX = 0;
-      var cameraY = 0;
-
-      // Define the object size and speed
-      var objectSize = 50;
-      var objectSpeed = 5;
-
-      // Function to load an image asynchronously
-      function loadImage(image) {
-        return new Promise(function (resolve, reject) {
-          image.onload = resolve;
-          image.onerror = reject;
-        });
-      }
-
-      // Create an image object for the background map
-      var backgroundImage = new Image();
-      backgroundImage.src =
-        "https://img.itch.zone/aW1hZ2UvNDg3NjA3LzI1MTgyMDEuanBn/original/8zGu0J.jpg"; // Replace with the path to your background image
-
-      var imagePaths = [
-        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/up.png",
-        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/down.png",
-        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/left.png",
-        "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/game/right.png",
-      ];
-
-      // Create an image object for the character
-      // Create an array of image objects
-      var images = [];
-      var currentImage = 0;
-
-      // Load all the images
-      for (var i = 0; i < imagePaths.length; i++) {
-        var image = new Image();
-        image.src = imagePaths[i];
-        images.push(image);
-      }
-
-      // Wait for the images to load
-      Promise.all([loadImage(backgroundImage), loadImage(images[currentImage])])
-        .then(function () {
-          // Event listener to handle arrow key presses
-          document.addEventListener("keydown", handleKeyPress, false);
-
-          // Function to handle arrow key presses
-          function handleKeyPress(e) {
-            // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
-            // Arrow key codes: 37 (left), 38 (up), 39 (right), 40 (down)
-            switch (e.keyCode) {
-              case 37: // left arrow
-                objectX -= objectSpeed;
-                currentImage = 2;
-                break;
-              case 38: // up arrow
-                objectY -= objectSpeed;
-                currentImage = 0;
-                break;
-              case 39: // right arrow
-                objectX += objectSpeed;
-                currentImage = 3;
-                break;
-              case 40: // down arrow
-                objectY += objectSpeed;
-                currentImage = 1;
-                break;
-              case 32:
-                let interval = setInterval(() => {
-                  currentImage = (currentImage + 1) % images.length;
-                }, 50);
-
-                setTimeout(() => {
-                  clearInterval(interval);
-                }, 500);
-
-                break;
-            }
-
-            // Update camera position based on object position
-            cameraX = objectX - canvas.width / 2;
-            cameraY = objectY - canvas.height / 2;
-
-            // Redraw the canvas
-            drawCanvas();
-          }
-
-          // Function to clear the canvas and draw the background and object
-          function drawCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Draw the background map
-            ctx.drawImage(
-              backgroundImage,
-              -cameraX,
-              -cameraY,
-              canvas.width,
-              canvas.height
-            );
-
-            // Draw the character
-            ctx.drawImage(
-              images[currentImage],
-              objectX - cameraX,
-              objectY - cameraY,
-              objectSize,
-              objectSize
-            );
-          }
-
-          // Initial drawing of the canvas
-          drawCanvas();
-        })
-        .catch(function (error) {
-          console.error("Failed to load images:", error);
-        });
-    </script>
-  </body>
+    // Adicionando ouvintes de eventos ao canvas
+    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mouseup", handleMouseUp);
+    canvas.addEventListener("mousemove", handleMouseMove);
+  </script>
+</body>
 </html>

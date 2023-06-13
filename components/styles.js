@@ -89,7 +89,7 @@ exports.css = `
       }
 
       .card, #canvas {
-        padding: 2.5vh 2.5vh 2.5vh 2.5vh;
+        padding: 1.5vh 2.5vh 2.5vh 2.5vh;
         align-items: left;
         margin-top: 2vh;
         margin-bottom: 2vh;
@@ -104,7 +104,7 @@ exports.css = `
       }
 
       canvas{
-        height: auto;
+        height: 100vh;
         border-radius: 1vh;
         width: 100%;
       }

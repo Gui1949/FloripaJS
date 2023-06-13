@@ -37,6 +37,31 @@ class Floripa {
       `;
   };
 
+  createGame = (title, ...body) => {
+    console.log(title);
+    return `
+      <!DOCTYPE html>
+      <html lang="pt-br">
+  
+          <style>
+            ${style.css}
+          </style>
+  
+          <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <link rel="icon" sizes="32x32" type="image/png" href="https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/icon.ico"/>
+              <script type="text/javascript" src="actions.js"></script>
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>${title}</title>
+          </head>
+          <body>
+              ${bodyInsert ? bodyInsert : body}
+          </body>
+      </html>
+      `;
+  };
+
   init = () => {
     bodyInsert = "";
   };
@@ -189,11 +214,7 @@ class Floripa {
       //Sprites, Velocidade, Funções, etc... Pique Construct só que com código
 
       this.insert(`
-      <div id="main">
-        <div id="canvas">
           <canvas id="${id}"></canvas>
-        </div>
-      </div>
       `);
 
       this.insert(`    <script>
@@ -204,6 +225,9 @@ class Floripa {
       canvas.style.backgroundSize = "contain"
 
       var ctx = canvas.getContext("2d");
+
+      ctx.canvas.width  = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
 
       // Set the initial position of the object and camera
       var objectX = canvas.width / 2;
@@ -315,11 +339,55 @@ class Floripa {
             currentEnemy = (currentEnemy + 1) % enemy_img.length;
           }, 1000);
 
+          var isMouseDown = false;
+
+          // Função para lidar com o evento de clique e segurar no canvas
+          function handleMouseDown(event) {
+            isMouseDown = true;
+          }
+      
+          // Função para lidar com o evento de soltar o botão do mouse
+          function handleMouseUp(event) {
+            isMouseDown = false;
+          }
+      
+          // Função para lidar com o evento de movimento do mouse no canvas
+          function handleMouseMove(event) {
+            // Verificar se o botão do mouse está sendo segurado
+            if (isMouseDown) {
+              // Obtendo as coordenadas do movimento do mouse em relação ao canvas
+              var rect = canvas.getBoundingClientRect();
+              var x = event.clientX - rect.left;
+              var y = event.clientY - rect.top;
+      
+              // Exibindo as coordenadas do movimento do mouse no console
+              console.log("Arrastando em (" + x + ", " + y + ")");
+      
+              // Realizando alguma ação com as coordenadas (exemplo: desenhar um círculo)
+              ctx.beginPath();
+              ctx.arc(x, y, 5, 0, 2 * Math.PI);
+              ctx.fillStyle = "blue";
+              ctx.fill();
+              ctx.closePath();
+
+              if(y > canvas.height / 2){
+                objectY -= objectSpeed
+              }
+              
+              if(y < canvas.height / 2){
+                objectY += objectSpeed
+              }
+
+            }
+          }
+      
+          // Adicionando ouvintes de eventos ao canvas
+          canvas.addEventListener("mousedown", handleMouseDown);
+          canvas.addEventListener("mouseup", handleMouseUp);
+          canvas.addEventListener("mousemove", handleMouseMove);
+
           // Function to clear the canvas and draw the background and object
           function drawCanvas() {
-
-
-
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             var offset = Math.sin(Date.now() / 500) * 2;
@@ -347,7 +415,9 @@ class Floripa {
               -cameraY + enemyY + offset,
               30,
               30
-            );          
+            );   
+
+            let contador = 0
 
             //Colisão RPG
             if(
@@ -356,9 +426,14 @@ class Floripa {
               (objectY - cameraY + offset >= (-cameraY + enemyY + offset) - 80 && objectY - cameraY + offset <= (-cameraY + enemyY + offset) + 30)
               ){
                 ctx.fillStyle = "white";
-                ctx.font = "bold 18px Arial";
-                ctx.fillText("Boa noite, filho", 5, canvas.height - 5);
-            }
+                ctx.font = "bold 30pt Arial";
+
+                let frase = "Boa noite, filho"
+
+                ctx.fillText(frase, 20, canvas.height - 20);
+
+                contador++;
+              }
 
           }
     

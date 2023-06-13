@@ -22,12 +22,23 @@ class Game extends Floripa {
 
     this.createRPGCanvas(
       "game_rpg", //ID
-      this.state.sprites //Sprites
+      this.state.sprites //Sprites do Player
+      //Propriedades:
+        //Insere também o sprite do Background do canvas
+        //Insere o background do mapa
+      //Função para criar inimigos:
+        //this.createEnemy(
+        //  id,
+        //  sprites do inimigo, 
+        //  informar se a posição é aleatória ou fixa,
+        //  definir tipo de inimigo (rpg, plataforma, etc), - Isso determina o tipo de colisão
+        //  definir ação (criar texto, morrer...)
+        //)
     );
   };
 
   page = () => {
-    return createPage("FloripaJS", this.render());
+    return this.createGame("FloripaJS", this.render());
   };
 }
 
