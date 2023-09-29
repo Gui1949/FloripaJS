@@ -1,6 +1,15 @@
 # FloripaJS
 
-O FloripaJS é um Framework para Web desenvolvido em Node.JS. Tendo em vista praticidade e simplicidade para o desenvolvedor. Todo o código é compilado no servidor, assim visando melhor desempenho.
+O FloripaJS é um framework web desenvolvido em Node.js puro, sem a necessidade de programação front-end. Ele permite criar aplicativos de forma eficiente e sem a complexidade de lidar com a camada visual. Com o FloripaJS, você pode focar na lógica do servidor e na criação de APIs, simplificando o desenvolvimento de aplicações web.
+Recursos do FloripaJS:
+
+Programação centrada no servidor
+Criação de APIs de forma simplificada
+Manipulação eficiente de solicitações e respostas
+Facilidade na integração com bancos de dados
+Escalabilidade e desempenho otimizados
+
+Com o FloripaJS, você pode desenvolver aplicativos web poderosos e escaláveis, sem a necessidade de se preocupar com o desenvolvimento da interface do usuário. O framework lida com as tarefas de manipulação de solicitações, roteamento, controle de estado e muito mais. Isso permite que você se concentre na lógica do servidor e na criação de APIs robustas.
 
 ## Execução
   1. Realize o download do projeto via ```git clone https://github.com/Gui1949/FloripaJS.git``` ou clicando no botão "Code".
