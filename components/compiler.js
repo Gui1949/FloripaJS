@@ -37,6 +37,15 @@ class Floripa {
       `;
   };
 
+  createOpenPage = (title, elements, functions) => {
+    elements = "<div>" + elements + "</div>";
+    functions = `<script>${functions}</script>`;
+
+    let data = elements + functions;
+
+    return data;
+  };
+
   createGame = (title, ...body) => {
     console.log(title);
     return `
@@ -199,25 +208,24 @@ class Floripa {
     });
 
     this.insert(`</div>`);
-  };  
-  
+  };
+
   createRPGCanvas = (id, sprites, velocity) => {
+    let spriteArray = [];
 
-      let spriteArray = []
+    sprites.forEach((element) => {
+      spriteArray.push("'" + element + "'");
+    });
 
-      sprites.forEach(element => {
-        spriteArray.push ("'" + element + "'");
-      });
+    //Tornar tudo possivel para funções floripaJS
 
-      //Tornar tudo possivel para funções floripaJS
+    //Sprites, Velocidade, Funções, etc... Pique Construct só que com código
 
-      //Sprites, Velocidade, Funções, etc... Pique Construct só que com código
-
-      this.insert(`
+    this.insert(`
           <canvas id="${id}"></canvas>
       `);
 
-      this.insert(`    <script>
+    this.insert(`    <script>
       // Get the canvas element and its 2D drawing context
       var canvas = document.getElementById("${id}");
 

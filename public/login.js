@@ -1,13 +1,20 @@
 const Floripa = require("../components/compiler");
 const Actions = require("../components/actions");
 require("../components/precompile");
+const HTMLParser = require("node-html-parser");
+
+const root = HTMLParser.parse('<ul id="list"><li>Hello World</li></ul>');
+
+console.log(root.querySelector("#list").childNodes);
+
+//PÁGINA EM DESENVOLVIMENTO
 
 // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
 let fs = require("fs");
 let path = require("path");
 
-let data = fs.readFileSync(path.join(__dirname) + "/pagina.flo", "utf8");
-data = data.toString();
+let elements = fs.readFileSync(path.join(__dirname) + "/pagina.html", "utf8");
+elements = elements.toString();
 // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
 
 class Login extends Floripa {
@@ -16,19 +23,35 @@ class Login extends Floripa {
   }
 
   page = () => {
-    // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
-    data = data.replace('$id', Actions.getValue("$id"));
-    data = data.replace(
-      '$senha',
-      Actions.getValue("$senha")
-    );
-    data = data.replace("Begin Function", "<script>");
-    data = data.replace(`End Function`, "</script>");
-    data = data.replace(`Begin JSX`, "<div>");
-    data = data.replace(`End JSX`, "</div>");
-    // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
+    function functions() {
+      window.alert("Olá Mundo");
 
-    return createPage("Teste Sankhya", data);
+      this.state = {
+        textbox: "",
+        senha: "",
+      };
+
+      state.textbox = document.getElementById("id").value;
+      state.senha = document.getElementById("senha").value;
+
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          username: state.textbox,
+          senha: state.senha,
+        }),
+      };
+
+      return window.alert(`Botão Clicado! Dados: ${JSON.stringify(state)}`);
+
+      fetch("http://localhost:3000/login", options)
+        .then((response) => response.json())
+        .then((response) => window.alert(response))
+        .catch((err) => console.error(err));
+    }
+
+    return createOpenPage("Teste Sankhya", elements, functions);
   };
 }
 

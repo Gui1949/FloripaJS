@@ -19,9 +19,9 @@ class Index extends Floripa {
       )
     ); // -> Funções executadas por dentro do DOM
 
-    createUpperNavBar("FloripaJS", "title-left");
+    createUpperNavBar("Exemplo de Elemento Clicável (BETA)", "title-left");
     initDiv("main");
-    createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
+    createElement("p", "Clique no botão abaixo para somar", "state.title");
     createElement("p", "0", "contador_label");
     createButton("id", "Adicionar", "setState()");
     endDiv();
