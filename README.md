@@ -21,13 +21,13 @@ Com o FloripaJS, você pode desenvolver aplicativos web poderosos e escaláveis,
 O FloripaJS é um framework que visa facilitar ao máximo a vida do desenvolvedor, na questão do front-end.
 Por exemplo, para consumir uma REST API, pode ser usado o seguinte código: 
 ```
-const http = require("http");
+const https = require("https");
 const Floripa = require("../components/compiler");
 
 let floripa = new Floripa();
 let data = "";
 
-http.get("https://bar-do-jeiz.onrender.com/data", (res) => {
+https.get("https://bar-do-jeiz.onrender.com/data", (res) => {
   res.setEncoding("utf-8");
   let rawData = "";
   res.on("data", (chunck) => {
