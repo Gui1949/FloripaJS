@@ -18,45 +18,61 @@ Com o FloripaJS, você pode desenvolver aplicativos web poderosos e escaláveis,
   
 ## Como usar
 
-O FloripaJS foi desenvolvido para ser um framework de uso simples e prático, para ser criada uma página, bastam poucas linhas:
+O FloripaJS é um framework que visa facilitar ao máximo a vida do desenvolvedor, na questão do front-end.
+Por exemplo, para consumir uma REST API, pode ser usado o seguinte código: 
 ```
+const http = require("http");
 const Floripa = require("../components/compiler");
-const Actions = require("../components/actions");
-require("../components/precompile");
 
-class Index extends Floripa {
-  constructor() {
-    super();
+let floripa = new Floripa();
+let data = "";
+
+http.get("https://bar-do-jeiz.onrender.com/data", (res) => {
+  res.setEncoding("utf-8");
+  let rawData = "";
+  res.on("data", (chunck) => {
+    rawData += chunck;
+  });
+
+  res.on("end", async () => {
+    try {
+      const parsedData = JSON.parse(rawData);
+      data = parsedData.data;
+      return data;
+    } catch (e) {
+      console.error(e.message);
+    }
+  });
+});
+
+const criarPosts = () => {
+  let i = 0;
+  while (i < data.length) {
+    console.log(i);
+    floripa.createCard(
+      data[i].ID,
+      data[i].USER_PIC,
+      data[i].USERNAME,
+      data[i].POST_DATA,
+      data[i].PIC_LOCAL,
+      data[i].POST_DESC
+    );
+    i++;
   }
+};
 
-  lifeCycle = `
-    this.state = {
-      contador: 0
-    }
-
-    let setState = () => {
-      ${Actions.Commit("state.contador")}
-      state.contador++
-    }
-    `;
-
-  render = () => {
-    init(); // -> Inicia a página
-    Actions.Paradox(this.lifeCycle); // -> Funções executadas por dentro do DOM 
-    createUpperNavBar("FloripaJS", "title-left");
-    initDiv("main");
-    createElement("p", "Seja bem-vindo ao FloripaJS!", "state.title");
-    createElement("p", "0", "state.contador");
-    createButton('id', 'Adicionar', "setState()");
-    endDiv();
-  };
-
-  page = () => {
-    return createPage("FloripaJS", this.render());
-  };
-}
-
-module.exports = Index;
+exports.page = () => {
+  floripa.init();
+  return floripa.createPage(
+    "Bar do Jeiz",
+    floripa.createUpperNavBar("Bar do Jeiz"),
+    floripa.initMaster(),
+    floripa.initDiv("feedUpperMargin"),
+    criarPosts(),
+    floripa.endDiv(),
+    floripa.endMaster()
+  );
+};
 ```
 Com o código acima, é criada a página a seguir:
 
@@ -69,14 +85,23 @@ Todas as páginas devem ser criadas no caminho ```./public```. As mesmas devem s
  
       ```
       if (url === "/nome_pagina") {
-       res.end(nome_pagina.page());
+        res.end(nome_pagina.page());
       }
       ```
+
+      Caso a página seja uma classe:
+
+      ```
+      if (url === "/nome_pagina") {
+        res.end(new nome_pagina().page());
+      }
+      ```
+
   * Levando em consideração que "nome_pagina" deve ser substituído pelo nome da página a ser inserida.
 
-## Comandos
+## Funções
 
-Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da página em si (nesse caso, use o ```./public/index.js``` como exemplo).
+Todos as funções dessa sessão deverão ser incluídas no arquivo de script da página em si (nesse caso, use o ```./public/index.js``` como exemplo).
 
 ```init();```
   * Determina o início da página e limpa a mesma.
@@ -114,6 +139,10 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
   * Cria um elemento na tela, usando em base a TAG do mesmo em HTML;
   * Somente o campo de tag do elemento é obrigatório
 
+```createImage(src da imagem);```
+  * Insere uma imagem;
+  * O SRC é obrigatório
+
 ```createTitle(texto, id do elemento);```
   * Insere um elemento de título na página;
   * Nenhum dos campos é obrigatório.
@@ -137,6 +166,10 @@ Todos os comandos dessa sessão deverão ser incluídos no arquivo de script da 
 ```createSimpleCard(titulo, textos);```
   * Cria um card com um título e vários parágrafos;
   * O único campo obrigatório é o título;
+
+```createLink(caminho, texto);```
+  * Cria um link (elemento <a></a>);
+  * Os dois campos são obrigatórios;
 
 ## Build
 

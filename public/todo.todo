@@ -2,6 +2,6 @@
 - Alterar o .FLO para .JSX, pois ninguem merece uma extensão nova;
 - Documentação no index;
 - Melhorar exemplos;
+- Limpar sujeira
 
-- Tornar o FloripaJS também uma engine para jogos;
 - Iniciar o Floripa AI para gerar sites automaticamente via prompt de texto;

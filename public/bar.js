@@ -1,10 +1,10 @@
-const http = require("http");
+const https = require("https");
 const Floripa = require("../components/compiler");
 
 let floripa = new Floripa();
 let data = "";
 
-http.get("http://bardojeiz-server.herokuapp.com/data/", (res) => {
+https.get("https://bar-do-jeiz.onrender.com/data", (res) => {
   res.setEncoding("utf-8");
   let rawData = "";
   res.on("data", (chunck) => {

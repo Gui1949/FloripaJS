@@ -5,6 +5,7 @@ const Index = require("../public/index");
 const LDM = require("../public/ldm");
 const Login = require("../public/login");
 const Welcome = require("../public/welcome")
+const Bar = require("../public/bar")
 
 //Arrumar esse if else
 
@@ -17,6 +18,8 @@ exports.router = (url, res) => {
     res.end(new Welcome().page());
   } else if (url === "/ldm") {
     res.end(new LDM().page());
+  }else if (url === "/bar") {
+    res.end(Bar.page());
   } else if (url === "/login") {
     res.end(new Login().page());
   } else {
