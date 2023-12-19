@@ -6,7 +6,7 @@ const Login = require("../public/login");
 const Welcome = require("../public/welcome");
 const Bar = require("../public/bar");
 
-//Arrumar esse if else
+// TODO: Acabar com esse if else
 
 exports.router = (url, res) => {
   if (url === "/portfolio") {

@@ -7,15 +7,17 @@ const root = HTMLParser.parse('<ul id="list"><li>Hello World</li></ul>');
 
 console.log(root.querySelector("#list").childNodes);
 
-//PÁGINA EM DESENVOLVIMENTO
+//TODO: Parsear o html para editar, adicionar e até remover elementos de lá
 
-// ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
+//TODO: ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
 let fs = require("fs");
 let path = require("path");
 
 let elements = fs.readFileSync(path.join(__dirname) + "/pagina.html", "utf8");
 elements = elements.toString();
 // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
+
+
 
 class Login extends Floripa {
   constructor() {
