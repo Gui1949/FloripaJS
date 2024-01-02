@@ -488,6 +488,19 @@ class Floripa {
     let alterado = script.replace("() => {", "");
     this.insert(`<script>${alterado}</script>`);
   };
+
+  insertExtHTML = (name) => {
+    let fs = require("fs");
+    let path = require("path");
+
+    let elements = fs.readFileSync(
+      path.join(__dirname, "..", "public", "html") + `/${name}.html`,
+      "utf8"
+    );
+    elements = elements.toString();
+
+    return elements;
+  };
 }
 
 module.exports = Floripa;

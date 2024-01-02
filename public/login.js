@@ -9,23 +9,14 @@ console.log(root.querySelector("#list").childNodes);
 
 //TODO: Parsear o html para editar, adicionar e até remover elementos de lá
 
-//TODO: ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
-let fs = require("fs");
-let path = require("path");
-
-let elements = fs.readFileSync(path.join(__dirname) + "/pagina.html", "utf8");
-elements = elements.toString();
-// ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
-//
-
-
-
 class Login extends Floripa {
   constructor() {
     super();
   }
 
   page = () => {
+    let elements = this.insertExtHTML('pagina');
+
     function functions() {
       window.alert("Olá Mundo");
 
