@@ -16,6 +16,7 @@ let path = require("path");
 let elements = fs.readFileSync(path.join(__dirname) + "/pagina.html", "utf8");
 elements = elements.toString();
 // ISSO AQUI TUDO DEVO COLOCAR NO COMPILER
+//
 
 
 
