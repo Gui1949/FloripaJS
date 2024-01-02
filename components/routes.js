@@ -4,12 +4,15 @@ const Index = require("../public/index");
 const LDM = require("../public/ldm");
 const Login = require("../public/login");
 const Welcome = require("../public/welcome");
+const CI_CD = require("../public/cicd");
 const Bar = require("../public/bar");
 
-// TODO: Acabar com esse if else
+// FIXME: Acabar com esse if else
 
 exports.router = (url, res) => {
-  if (url === "/portfolio") {
+  if (url === "/ci_cd") {
+    res.end(new CI_CD().page());
+  } else if (url === "/portfolio") {
     res.end(new Portfolio().page());
   } else if (url === "/") {
     res.end(new Welcome().page());

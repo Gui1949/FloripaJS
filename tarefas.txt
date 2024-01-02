@@ -1,4 +1,3 @@
 TODO: Desenvolver exemplos mais avançados para evoluir mais o projeto
 TODO: Documentação no index
 FIXME: Melhorar exemplos
-TODO: Iniciar o Floripa AI para gerar sites automaticamente via prompt de texto;

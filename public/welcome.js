@@ -23,19 +23,25 @@ class WelcomePage extends Floripa {
 
   render = () => {
     init(); // Inicia a página
-    createUpperNavBar("FloripaJS", "title-left-image", "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/icon.png");
+    createUpperNavBar(
+      "FloripaJS",
+      "title-left-image",
+      "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/icon.png"
+    );
     initDiv("main");
     createElement("h1", this.state.title); // Exibe o título vindo do estado
-    this.createImage("https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/logo_name.png")
+    this.createImage(
+      "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/logo_name.png"
+    );
     createElement("p", this.state.description); // Exibe a descrição vinda do estado
-    createElement("h2", "Recursos do FloripaJS:");
+    createElement("h2", "Recursos do FloripaJS:", "title");
     createElement("ul");
     this.state.features.forEach((feature) => {
       const liElement = createElement("li", feature);
     });
     createElement("p", this.state.description2);
 
-    createElement("h2", "Exemplos dos principais elementos:");
+    createElement("h2", "Exemplos dos principais elementos:", "title");
     createElement("li", "Card - Feed de postagens (com imagens):");
 
     this.createCard(

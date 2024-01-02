@@ -173,40 +173,5 @@ Todos as funções dessa sessão deverão ser incluídas no arquivo de script da
 
 ## Build
 
-Para executar o build de seu código, o FloripaJS conta com o arquivo ```./builder```:
-
-  ```
-  const index = require("./public/index");
-  const fs = require("fs");
-
-  let pages = ['index'];
-
-  pages.forEach((element) => {
-    fs.writeFile(
-      `./build/${element}.html`,
-      eval(element).page(),
-      (err) => {
-        console.log(err);
-      }
-    );
-  });
-  ```
-
-As páginas devem ser importadas conforme a primeira linha do código: ```const index = require("./public/index");```. Após a importação, o nome da página deve ser inserido na array pages, segue exemplo de inserção de uma página chamada "Cerginho":
-  
-    const index = require("./public/index");
-    const cerginho = require("./public/cerginho")
-    const fs = require("fs");
-
-    let pages = ['index','cerginho'];
-
-    pages.forEach((element) => {
-      fs.writeFile(
-        `./build/${element}.html`,
-        eval(element).page(),
-        (err) => {
-          console.log(err);
-        }
-      );
-    });
+Para executar o build do seu código, deve ser utilizado o comando ```npm run build <nome do arquivo>```. Lembrando que não devem ser inseridos os caracteres '<' e '>' no comando, somente o nome do arquivo .js alocado no diretório ```/public```.
     

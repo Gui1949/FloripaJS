@@ -1,17 +1,13 @@
 const index = require("../public/index");
-const portfolio = require("../public/portfolio");
+const file = require("../public/" + process.argv[2].replace('.js',''));
 const fs = require("fs");
 const Floripa = require("./compiler");
 
-let pages = ['portfolio'];
-
-pages.forEach((element) => {
-  fs.writeFile(
-    `build/${element}.html`,
-    // eval(element).page(),
-    new portfolio().page(),
-    (err) => {
-      console.log(err);
-    }
-  );
-});
+fs.writeFile(
+  `build/${process.argv[2].replace('.js','')}.html`,
+  // eval(element).page(),
+  new file().page(),
+  (err) => {
+    console.log(err);
+  }
+);

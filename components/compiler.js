@@ -28,7 +28,7 @@ class Floripa {
               ${bodyInsert ? bodyInsert : body}
               <center>
                 <p class="descript_footer">
-                Criado com
+                Criado com 👺 via
                 <a href="https://github.com/Gui1949/FloripaJS">FloripaJS</a>
                 </p>
               </center>
@@ -156,7 +156,7 @@ class Floripa {
       this.insert(
         `<div class="navbar title-left image" style="vertical-align: middle">
         <img src="${items[1]}" height="65%" style="margin-left: 2vh"/>
-          <h2>
+          <h2 id='title'>
             ${elementTitle}
           </h2>
         </div>`
