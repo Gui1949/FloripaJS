@@ -5,9 +5,9 @@ const HTMLParser = require("node-html-parser");
 
 const root = HTMLParser.parse('<ul id="list"><li>Hello World</li></ul>');
 
-console.log(root.querySelector("#list").childNodes);
+// console.log(root.querySelector("#list").childNodes);
 
-//TODO: Parsear o html para editar, adicionar e até remover elementos de lá
+// TODO: Parsear o html para editar, adicionar e até remover elementos de lá
 
 class Login extends Floripa {
   constructor() {

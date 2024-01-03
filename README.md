@@ -74,26 +74,9 @@ Com o código acima, é criada a página a seguir:
 
 <p align="center">Imagem 1</p>
 
-Todas as páginas devem ser criadas no caminho `./public`. As mesmas devem seguir o padrão estabelecido acima, e devem ser referenciadas no arquivo `./routes.js` da seguinte maneira:
+Todas as páginas devem ser criadas no caminho `./public`. As mesmas devem seguir o padrão estabelecido acima. Quando criada uma página, a mesma já poderá ser acessada via ```http://localhost:25565/<nome do arquivo>```
 
-- A página deve ser requerida via `const nome_pagina = require("./public/nome_pagina");`;
-- E deve ser criada uma rota:
-
-  ```
-  if (url === "/nome_pagina") {
-    res.end(nome_pagina.page());
-  }
-  ```
-
-  Caso a página seja uma classe:
-
-  ```
-  if (url === "/nome_pagina") {
-    res.end(new nome_pagina().page());
-  }
-  ```
-
-- Levando em consideração que "nome_pagina" deve ser substituído pelo nome da página a ser inserida.
+- Não devem ser inseridos os caracteres '<' e '>' na url, somente o nome do arquivo .js alocado no diretório `/public` sem a extensão.
 
 ## Funções
 
