@@ -1,6 +1,10 @@
 const Floripa = require("../components/compiler");
 const Actions = require("../components/actions");
 require("../components/precompile");
+let path = require("path");
+const fs = require("fs");
+
+//TODO: Colocar mais exemplos e também melhorar a doc
 
 class WelcomePage extends Floripa {
   constructor() {
@@ -29,10 +33,26 @@ class WelcomePage extends Floripa {
       "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/icon.png"
     );
     initDiv("main");
+
+    const files = fs.readdirSync(path.join(__dirname));
+
     createElement("h1", this.state.title); // Exibe o título vindo do estado
     this.createImage(
       "https://raw.githubusercontent.com/Gui1949/FloripaJS/master/blob/logo_name.png"
     );
+
+    initDiv("canvas");
+
+    createElement("h2", "Páginas Existentes", "");
+
+    for (let file of files) {
+      if (file.endsWith(".js")) {
+        file = file.replace(".js", "");
+        this.createLink(`/${file}`, file.toUpperCase());
+      }
+    }
+    this.endDiv();
+
     createElement("p", this.state.description); // Exibe a descrição vinda do estado
     createElement("h2", "Recursos do FloripaJS:", "title");
     createElement("ul");

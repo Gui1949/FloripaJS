@@ -11,7 +11,8 @@ exports.router = (url, res) => {
       if ("/" + file.replace(".js", "") === url) {
         try {
           res.end(new page().page());
-        } catch {
+        } catch (err){
+          console.log(err)
           res.end(page.page());
         }
 

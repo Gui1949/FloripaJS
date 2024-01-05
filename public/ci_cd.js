@@ -27,6 +27,21 @@ class CI_CD extends Floripa {
     );
     this.createLine();
     this.createSimpleCard(
+      "Inventário",
+      "Versão web do sistema de inventário criado no ERP Sankhya"
+    );
+    this.createButton(
+      "canvas",
+      "Pull",
+      "fetch(`http://msp-thanos.medsystems.local:30001/update/inventario`).then((res) => res.json()).then((reqres) => window.alert(`Solicitação enviada. Retorno: ${reqres.data}`))"
+    );
+    this.createButton(
+      "canvas",
+      "Deploy",
+      "fetch(`http://msp-thanos.medsystems.local:30001/restart/inventario`).then((res) => res.json()).then((reqres) => window.alert(`Solicitação enviada. Retorno: ${reqres.data}`))"
+    );
+    this.createLine();
+    this.createSimpleCard(
       "Integração ELOS - Sankhya",
       "Realiza a integração entre o Data Warehouse da ELOS com o ERP Sankhya. Trazendo dados de financeiro, NFSE, serviços, clientes e estoque."
     );
