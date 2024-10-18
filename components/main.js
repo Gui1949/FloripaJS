@@ -13,5 +13,5 @@ const server = http.createServer(async(req, res) => {
   res.end();
 });
 
-server.listen(25565, "127.0.0.1");
-console.log("Server abrido!! Porta 25565");
+server.listen(25565, "0.0.0.0");
+console.log("Rodando - Porta 25565");
