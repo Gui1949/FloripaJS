@@ -1,7 +1,7 @@
 const fs = require("fs");
 let path = require("path");
 
-exports.router = (url, res) => {
+exports.router = async (url, res) => {
   const files = fs.readdirSync(path.join(__dirname, "..", "public"));
 
   for (const file of files) {
@@ -10,10 +10,10 @@ exports.router = (url, res) => {
 
       if ("/" + file.replace(".js", "") === url) {
         try {
-          res.write(new page().page());
+          res.write(await new page().page());
         } catch (err){
           console.log(err)
-          res.write(page.page());
+          res.write(await page.page());
         }
 
         return;
@@ -22,5 +22,5 @@ exports.router = (url, res) => {
   }
 
   //res.writeHead(404, { "Content-type": "text/html; charset=utf-8" });
-  res.write("Erro 404: Página não encontrada");
+  //res.write("Erro 404: Página não encontrada");
 };

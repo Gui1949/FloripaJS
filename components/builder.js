@@ -3,11 +3,17 @@ const file = require("../public/" + process.argv[2].replace('.js',''));
 const fs = require("fs");
 const Floripa = require("./compiler");
 
+const build = async() => {
+	
 fs.writeFile(
   `build/${process.argv[2].replace('.js','')}.html`,
-  // eval(element).page(),
-  new file().page(),
+   //file.page(),
+  await new file().page(),
   (err) => {
     console.log(err);
   }
 );
+
+}
+
+build()

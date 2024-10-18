@@ -7,13 +7,9 @@ let start = (process.platform == 'darwin'? 'open': process.platform == 'win32'? 
 require('child_process').exec(start + ' ' + url);
 
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async(req, res) => {
   res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
-  let url = req.url;
-
-  console.log(req.url);
-
-  Routes.router(req.url, res)
+  await Routes.router(req.url, res)
   res.end();
 });
 
