@@ -10,10 +10,10 @@ exports.router = (url, res) => {
 
       if ("/" + file.replace(".js", "") === url) {
         try {
-          res.end(new page().page());
+          res.write(new page().page());
         } catch (err){
           console.log(err)
-          res.end(page.page());
+          res.write(page.page());
         }
 
         return;
@@ -21,6 +21,6 @@ exports.router = (url, res) => {
     }
   }
 
-  res.writeHead(404, { "Content-type": "text/html; charset=utf-8" });
-  res.end("Erro 404: Página não encontrada");
+  //res.writeHead(404, { "Content-type": "text/html; charset=utf-8" });
+  res.write("Erro 404: Página não encontrada");
 };
